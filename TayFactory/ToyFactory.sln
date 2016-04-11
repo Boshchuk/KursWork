@@ -11,6 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 Business", "2 Business", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 Data", "3 Data", "{EEB70F3A-A6CB-4EB1-8D5A-2FD083BE68A5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToyFactory.Dal", "ToyFactory.Dal\ToyFactory.Dal.csproj", "{8ED3B48B-A99B-415D-9CFB-D5C234EE9E7A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,8 +23,16 @@ Global
 		{75CBED01-F578-49C1-9044-9CFB6A343D20}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{75CBED01-F578-49C1-9044-9CFB6A343D20}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{75CBED01-F578-49C1-9044-9CFB6A343D20}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8ED3B48B-A99B-415D-9CFB-D5C234EE9E7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8ED3B48B-A99B-415D-9CFB-D5C234EE9E7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8ED3B48B-A99B-415D-9CFB-D5C234EE9E7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8ED3B48B-A99B-415D-9CFB-D5C234EE9E7A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{75CBED01-F578-49C1-9044-9CFB6A343D20} = {457C9B0F-A621-4EC0-817E-9C417E5D942C}
+		{8ED3B48B-A99B-415D-9CFB-D5C234EE9E7A} = {EEB70F3A-A6CB-4EB1-8D5A-2FD083BE68A5}
 	EndGlobalSection
 EndGlobal
