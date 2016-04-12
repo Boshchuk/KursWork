@@ -49,17 +49,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Customer.cs" />
-    <Compile Include="Material.cs" />
-    <Compile Include="Toy.cs" />
+    <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\Material.cs" />
+    <Compile Include="Models\Toy.cs" />
+    <Compile Include="Repositories\Interfaces\IMaterialRepository.cs" />
+    <Compile Include="Repositories\Implementation\MaterialRepository.cs" />
     <Compile Include="ToyFactoryContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ToyProduction.cs" />
+    <Compile Include="Models\ToyProduction.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

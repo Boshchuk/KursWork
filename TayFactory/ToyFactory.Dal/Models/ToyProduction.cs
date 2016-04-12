@@ -8,6 +8,6 @@ namespace ToyFactory.Dal
 
         public Toy ConstructedToy { get; set; }
 
-        public List<Material> UsedMaterials { get; set; }
+        public virtual List<Material> UsedMaterials { get; set; }
     }
 }
