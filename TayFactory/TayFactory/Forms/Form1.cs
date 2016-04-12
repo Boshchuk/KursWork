@@ -1,7 +1,7 @@
 ﻿using System.Windows.Forms;
-using ToyFactory.Forms;
+using ToyFactory.Forms.Materials;
 
-namespace ToyFactory
+namespace ToyFactory.Forms
 {
     public partial class Form1 : Form
     {
@@ -19,9 +19,10 @@ namespace ToyFactory
 
         private void OpenMaterialsForm()
         {
+            this.Hide();
             materialsForm = new MaterialsForm();
             materialsForm.ShowDialog();
-          
+            this.Show();
         }
 
         private void AnotherClick()

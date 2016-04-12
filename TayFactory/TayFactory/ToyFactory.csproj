@@ -67,10 +67,16 @@
     <Compile Include="Forms\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\MaterialsForm.cs">
+    <Compile Include="Forms\Materials\AddEditMaterialForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\MaterialsForm.Designer.cs">
+    <Compile Include="Forms\Materials\AddEditMaterialForm.Designer.cs">
+      <DependentUpon>AddEditMaterialForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Materials\MaterialsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Materials\MaterialsForm.Designer.cs">
       <DependentUpon>MaterialsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -78,7 +84,10 @@
     <EmbeddedResource Include="Forms\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\MaterialsForm.resx">
+    <EmbeddedResource Include="Forms\Materials\AddEditMaterialForm.resx">
+      <DependentUpon>AddEditMaterialForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Materials\MaterialsForm.resx">
       <DependentUpon>MaterialsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

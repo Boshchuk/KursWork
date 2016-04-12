@@ -1,4 +1,4 @@
-﻿namespace ToyFactory
+﻿namespace ToyFactory.Forms
 {
     partial class Form1
     {
