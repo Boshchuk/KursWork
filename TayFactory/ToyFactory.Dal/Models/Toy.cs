@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace ToyFactory.Dal
+namespace ToyFactory.Dal.Models
 {
     public class Toy
     {

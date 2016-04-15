@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using ToyFactory.Dal.Models;
 using ToyFactory.Dal.Repositories.Interfaces;
 
 namespace ToyFactory.Dal.Repositories.Implementation

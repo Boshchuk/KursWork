@@ -1,4 +1,4 @@
-namespace ToyFactory.Dal
+namespace ToyFactory.Dal.Models
 {
     public class Customer
     {

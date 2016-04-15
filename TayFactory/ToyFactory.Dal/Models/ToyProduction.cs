@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace ToyFactory.Dal
+namespace ToyFactory.Dal.Models
 {
     public class ToyProduction
     {

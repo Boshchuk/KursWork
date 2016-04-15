@@ -1,4 +1,5 @@
 ﻿using System.Data.Entity;
+using ToyFactory.Dal.Models;
 
 namespace ToyFactory.Dal
 {
