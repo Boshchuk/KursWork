@@ -132,7 +132,15 @@ namespace ToyFactory.Forms.Materials
 
             if (result == DialogResult.OK)
             {
-                materialRepository.InsertMaterial(material);
+                if (formMode == FormMode.Add)
+                {
+                    materialRepository.InsertMaterial(material);
+                }
+                else
+                {
+                    materialRepository.UpdateMaterial(material);
+                }
+                
                 materialRepository.Save();
                 InsertDataFromRepository();
             }

@@ -37,7 +37,7 @@ namespace ToyFactory.Dal.Repositories.Implementation
             context.Materials.Remove(material);
         }
 
-        public void UpdateStudent(Material material)
+        public void UpdateMaterial(Material material)
         {
             context.Entry(material).State = EntityState.Modified;
         }

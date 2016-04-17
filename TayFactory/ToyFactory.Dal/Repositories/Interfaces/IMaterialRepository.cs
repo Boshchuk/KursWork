@@ -11,7 +11,7 @@ namespace ToyFactory.Dal.Repositories.Interfaces
 
         void InsertMaterial(Material material);
         void DeleteMaterial(int materialId);
-        void UpdateStudent(Material material);
+        void UpdateMaterial(Material material);
         void Save();
     }
 }
