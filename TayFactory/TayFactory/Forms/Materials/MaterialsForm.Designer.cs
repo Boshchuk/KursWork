@@ -30,15 +30,18 @@
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnShowAddNewMaterialForm = new System.Windows.Forms.Button();
+            this.btnEditMaterial = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(13, 13);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(460, 242);
             this.dataGridView1.TabIndex = 0;
             // 
@@ -53,11 +56,24 @@
             this.btnShowAddNewMaterialForm.UseVisualStyleBackColor = true;
             this.btnShowAddNewMaterialForm.Click += new System.EventHandler(this.btnShowAddNewMaterialForm_Click);
             // 
+            // btnEditMaterial
+            // 
+            this.btnEditMaterial.Enabled = false;
+            this.btnEditMaterial.Location = new System.Drawing.Point(488, 54);
+            this.btnEditMaterial.Name = "btnEditMaterial";
+            this.btnEditMaterial.Size = new System.Drawing.Size(139, 23);
+            this.btnEditMaterial.TabIndex = 1;
+            this.btnEditMaterial.Tag = "Edit";
+            this.btnEditMaterial.Text = "Edit Material";
+            this.btnEditMaterial.UseVisualStyleBackColor = true;
+            this.btnEditMaterial.Click += new System.EventHandler(this.btnShowAddNewMaterialForm_Click);
+            // 
             // MaterialsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(639, 267);
+            this.Controls.Add(this.btnEditMaterial);
             this.Controls.Add(this.btnShowAddNewMaterialForm);
             this.Controls.Add(this.dataGridView1);
             this.Name = "MaterialsForm";
@@ -71,5 +87,6 @@
 
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btnShowAddNewMaterialForm;
+        private System.Windows.Forms.Button btnEditMaterial;
     }
 }

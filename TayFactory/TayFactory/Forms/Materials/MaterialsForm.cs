@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Windows.Forms;
 using ToyFactory.Dal;
 using ToyFactory.Dal.Models;
@@ -44,6 +45,19 @@ namespace ToyFactory.Forms.Materials
         private void SettupEvents()
         {
             dataGridView1.UserDeletingRow += DataGridView1_UserDeletingRow;
+
+            dataGridView1.SelectionChanged += DataGridView1_SelectionChanged;
+            dataGridView1.RowLeave += DataGridView1_RowLeave;
+        }
+
+        private void DataGridView1_RowLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            //btnEditMaterial.Enabled = false;
+        }
+
+        private void DataGridView1_SelectionChanged(object sender, EventArgs e)
+        {
+            btnEditMaterial.Enabled = true;
         }
 
         private void DataGridView1_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
@@ -59,7 +73,7 @@ namespace ToyFactory.Forms.Materials
                 {
                     e.Cancel = true;
                 }
-                    
+
             }
         }
 
@@ -74,19 +88,56 @@ namespace ToyFactory.Forms.Materials
         {
             this.Hide();
 
-            var addMaterial = new Material();
-            var addEditModal = new AddEditMaterialForm(addMaterial, FormMode.Add);
+            var tag = ((Button) sender).Tag;
+
+            var formMode = FormMode.Add;
+
+            if (tag == "Edit")
+            {
+                formMode = FormMode.Edit;
+            }
+            
+            var material = new Material();
+
+            if (formMode == FormMode.Edit)
+            {
+                var materials = materialRepository.GetMaterials();
+                // init material as existed one
+                if (dataGridView1.SelectedRows.Count > 0)
+                {
+                    var selected = dataGridView1.SelectedRows[0];
+                    
+                    if (selected != null)
+                    {
+                        var index = selected.Index;
+
+
+                        material = materials.ToList()[index];
+                    }
+                    else
+                    {
+                        material = materials.FirstOrDefault();
+                    }
+                }
+                else
+                {
+                    material = materials.FirstOrDefault();
+                }
+                
+            }
+
+            var addEditModal = new AddEditMaterialForm(material, formMode);
 
             var result = addEditModal.ShowDialog();
 
             if (result == DialogResult.OK)
             {
-                materialRepository.InsertMaterial(addMaterial);
+                materialRepository.InsertMaterial(material);
                 materialRepository.Save();
                 InsertDataFromRepository();
             }
 
-            this.Show( );
+            this.Show();
         }
     }
 }

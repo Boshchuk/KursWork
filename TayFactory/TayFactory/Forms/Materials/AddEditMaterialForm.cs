@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -36,6 +37,11 @@ namespace ToyFactory.Forms.Materials
                 case FormMode.Edit:
                     {
                         button1.Text = EditBtnText;
+
+                        txtCode.Text = material.Code;
+                        txtTitle.Text = material.Title;
+                        txtPrice.Text = material.Price.ToString(CultureInfo.InvariantCulture);
+
                         break;
                     }
             }
@@ -62,9 +68,9 @@ namespace ToyFactory.Forms.Materials
             // display error if not valid
             if (isValid)
             {
-                _material.Code = textBox1.Text;
-                _material.Title = textBox2.Text;
-                _material.Price = decimal.Parse(textBox3.Text);
+                _material.Code = txtCode.Text;
+                _material.Title = txtTitle.Text;
+                _material.Price = decimal.Parse(txtPrice.Text);
 
                 this.DialogResult = DialogResult.OK;
                 this.Close();
@@ -81,17 +87,17 @@ namespace ToyFactory.Forms.Materials
         private bool IsValid()
         {
             // todo: add more validation here with messages
-            if (string.IsNullOrEmpty(textBox1.Text))
+            if (string.IsNullOrEmpty(txtCode.Text))
             {
                 return false;
             }
 
-            if (string.IsNullOrEmpty(textBox2.Text))
+            if (string.IsNullOrEmpty(txtTitle.Text))
             {
                 return false;
             }
 
-            if (string.IsNullOrEmpty(textBox3.Text))
+            if (string.IsNullOrEmpty(txtPrice.Text))
             {
                 return false;
             }
