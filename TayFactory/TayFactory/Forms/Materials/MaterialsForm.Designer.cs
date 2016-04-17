@@ -44,10 +44,11 @@
             // 
             // btnShowAddNewMaterialForm
             // 
-            this.btnShowAddNewMaterialForm.Location = new System.Drawing.Point(488, 32);
+            this.btnShowAddNewMaterialForm.Location = new System.Drawing.Point(488, 25);
             this.btnShowAddNewMaterialForm.Name = "btnShowAddNewMaterialForm";
             this.btnShowAddNewMaterialForm.Size = new System.Drawing.Size(139, 23);
             this.btnShowAddNewMaterialForm.TabIndex = 1;
+            this.btnShowAddNewMaterialForm.Tag = "Add";
             this.btnShowAddNewMaterialForm.Text = "Add new Material";
             this.btnShowAddNewMaterialForm.UseVisualStyleBackColor = true;
             this.btnShowAddNewMaterialForm.Click += new System.EventHandler(this.btnShowAddNewMaterialForm_Click);

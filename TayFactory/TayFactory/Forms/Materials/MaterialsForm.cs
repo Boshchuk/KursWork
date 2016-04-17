@@ -1,25 +1,44 @@
 ﻿using System;
 using System.Windows.Forms;
+using ToyFactory.Dal;
+using ToyFactory.Dal.Models;
+using ToyFactory.Dal.Repositories.Implementation;
 
 namespace ToyFactory.Forms.Materials
 {
     public partial class MaterialsForm : Form
     {
-        public MaterialsForm()
+        private readonly MaterialRepository materialRepository;
+
+        public MaterialsForm(MaterialRepository materialRepository)
         {
+            this.materialRepository = materialRepository;
             InitializeComponent();
 
             InitHeaders();
             SettupEvents();
 
             SettupDataSource();
+            InsertDataFromRepository();
         }
 
         private void SettupDataSource()
         {
             // dataGridView1.DataSource = new dataSou
-            this.dataGridView1.Rows.Add("five", "six", "seven", "eight");
-            this.dataGridView1.Rows.Insert(0, "one", "two", "three", "four");
+            //this.dataGridView1.Rows.Add("five", "six", "seven", "eight");
+            //this.dataGridView1.Rows.Insert(0, "one", "two", "three", "four");
+        }
+
+        private void InsertDataFromRepository()
+        {
+            this.dataGridView1.Rows.Clear();
+
+            var materials = materialRepository.GetMaterials();
+
+            foreach (var material in materials)
+            {
+                this.dataGridView1.Rows.Add(material.Code, material.Title, material.Price);
+            }
         }
 
         private void SettupEvents()
@@ -53,7 +72,21 @@ namespace ToyFactory.Forms.Materials
 
         private void btnShowAddNewMaterialForm_Click(object sender, EventArgs e)
         {
+            this.Hide();
 
+            var addMaterial = new Material();
+            var addEditModal = new AddEditMaterialForm(addMaterial, FormMode.Add);
+
+            var result = addEditModal.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                materialRepository.InsertMaterial(addMaterial);
+                materialRepository.Save();
+                InsertDataFromRepository();
+            }
+
+            this.Show( );
         }
     }
 }
