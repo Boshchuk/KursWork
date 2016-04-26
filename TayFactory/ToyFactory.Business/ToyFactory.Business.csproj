@@ -41,7 +41,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="Interfaces\IToysController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ToysController.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ToyFactory.Dal\ToyFactory.Dal.csproj">
