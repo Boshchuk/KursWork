@@ -64,6 +64,7 @@ namespace ToyFactory.Forms.Materials
         {
             if (!e.Row.IsNewRow)
             {
+                // TODO: move to helper
                 var response = MessageBox.Show("Are you sure?", "Delete row?",
                                   MessageBoxButtons.YesNo,
                                   MessageBoxIcon.Question,
@@ -73,7 +74,22 @@ namespace ToyFactory.Forms.Materials
                 {
                     e.Cancel = true;
                 }
+                else
+                {
+                    var material = GetSelectedMaterial();
 
+                    try {
+
+                        materialRepository.DeleteMaterial(material.MaterialId);
+                        materialRepository.Save();
+                    }
+                    catch(Exception ex)
+                    {
+                        // TODO: add error handling
+                        MessageBox.Show(ex.Message);
+                    }
+
+                }
             }
         }
 
@@ -82,6 +98,33 @@ namespace ToyFactory.Forms.Materials
             dataGridView1.Columns.Add("Code", "Code");
             dataGridView1.Columns.Add("Title", "Title");
             dataGridView1.Columns.Add("Price", "Price");
+        }
+
+        private Material GetSelectedMaterial()
+        {
+            var material = new Material();
+            var materials = materialRepository.GetMaterials();
+            // init material as existed one
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                var selected = dataGridView1.SelectedRows[0];
+
+                if (selected != null)
+                {
+                    var index = selected.Index;
+                    material = materials.ToList()[index];
+                }
+                else
+                {
+                    material = materials.FirstOrDefault();
+                }
+            }
+            else
+            {
+                material = materials.FirstOrDefault();
+            }
+
+            return material;
         }
 
         private void btnShowAddNewMaterialForm_Click(object sender, EventArgs e)
@@ -101,29 +144,7 @@ namespace ToyFactory.Forms.Materials
 
             if (formMode == FormMode.Edit)
             {
-                var materials = materialRepository.GetMaterials();
-                // init material as existed one
-                if (dataGridView1.SelectedRows.Count > 0)
-                {
-                    var selected = dataGridView1.SelectedRows[0];
-                    
-                    if (selected != null)
-                    {
-                        var index = selected.Index;
-
-
-                        material = materials.ToList()[index];
-                    }
-                    else
-                    {
-                        material = materials.FirstOrDefault();
-                    }
-                }
-                else
-                {
-                    material = materials.FirstOrDefault();
-                }
-                
+                material = GetSelectedMaterial();
             }
 
             var addEditModal = new AddEditMaterialForm(material, formMode);
