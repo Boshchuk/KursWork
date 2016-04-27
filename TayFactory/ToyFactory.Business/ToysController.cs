@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ToyFactory.Dal;
+using ToyFactory.Dal.Models;
 using ToyFactory.Dal.Repositories.Implementation;
 using ToyFactory.Dal.Repositories.Interfaces;
 
@@ -32,6 +33,12 @@ namespace ToyFactory.Business
 
             _materialRepository = new MaterialRepository(_context);
             _toyRepository = new ToyRepository(_context);
+        }
+
+        public void InsertToy(Toy toy)
+        {
+            _toyRepository.Insert(toy);
+            _toyRepository.Save();
         }
 
 
