@@ -9,58 +9,58 @@ namespace ToyFactory.Dal.Repositories.Implementation
 {
     public class MaterialRepository : IMaterialRepository
     {
-        private readonly ToyFactoryContext context;
+        private readonly ToyFactoryContext _context;
 
         public MaterialRepository(ToyFactoryContext context)
         {
-            this.context = context;
+            this._context = context;
         }
 
         public IEnumerable<Material> GetMaterials()
         {
-            return context.Materials.ToList();
+            return _context.Materials.ToList();
         }
 
         public Material GetMaterialById(int materialId)
         {
-            return context.Materials.Find(materialId);
+            return _context.Materials.Find(materialId);
         }
 
         public void InsertMaterial(Material material)
         {
-            context.Materials.Add(material);
+            _context.Materials.Add(material);
         }
 
         public void DeleteMaterial(int materialId)
         {
-            var material = context.Materials.Find(materialId);
-            context.Materials.Remove(material);
+            var material = _context.Materials.Find(materialId);
+            _context.Materials.Remove(material);
         }
 
         public void UpdateMaterial(Material material)
         {
-            context.Entry(material).State = EntityState.Modified;
+            _context.Entry(material).State = EntityState.Modified;
         }
 
         public void Save()
         {
-            context.SaveChanges();
+            _context.SaveChanges();
         }
 
         #region IDisposible
 
-        private bool disposed = false;
+        private bool _disposed;
 
         protected virtual void Dispose(bool disposing)
         {
-            if (!this.disposed)
+            if (!_disposed)
             {
                 if (disposing)
                 {
-                    context.Dispose();
+                    _context.Dispose();
                 }
             }
-            this.disposed = true;
+            _disposed = true;
         }
 
         public void Dispose()
