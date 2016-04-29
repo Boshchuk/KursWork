@@ -41,6 +41,11 @@ namespace ToyFactory.Business
             _toyRepository.Save();
         }
 
+        public void UpdateToy(Toy toy)
+        {
+            _toyRepository.Update(toy);
+            _toyRepository.Save();  // TODO: check is this needed
+        }
 
     }
 }
