@@ -50,6 +50,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CantConnectToDbException.cs" />
+    <Compile Include="Migrations\201604291941210_materials_added.cs" />
+    <Compile Include="Migrations\201604291941210_materials_added.Designer.cs">
+      <DependentUpon>201604291941210_materials_added.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Material.cs" />
     <Compile Include="Models\Toy.cs" />
@@ -65,7 +71,11 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201604291941210_materials_added.resx">
+      <DependentUpon>201604291941210_materials_added.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -13,16 +13,16 @@ namespace ToyFactory.Forms
 
         private ToysListForm toysListForm;
 
-        private ToyFactoryContext Context;
+        private readonly ToyFactoryContext _context;
         private MaterialRepository _materialRepository;
 
         public Form1()
         {
             InitializeComponent();
 
-            Context = new ToyFactoryContext();
+            _context = new ToyFactoryContext();
 
-            _materialRepository = new MaterialRepository(Context);
+            _materialRepository = new MaterialRepository(_context);
         }
 
         private void btnOpenMaterialsForm_Click(object sender, System.EventArgs e)
@@ -46,7 +46,7 @@ namespace ToyFactory.Forms
         private void OpenToyConstructorForm()
         {
             this.Hide();
-            toysListForm = new ToysListForm();
+            toysListForm = new ToysListForm(_context);
             toysListForm.ShowDialog();
             this.Show();
         }

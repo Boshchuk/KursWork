@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace ToyFactory.Dal.Models
@@ -11,8 +12,15 @@ namespace ToyFactory.Dal.Models
 
         public string Title { get; set; }
 
+
         public decimal Price { get; set; }
 
+        public virtual List<Material> UsedMaterials { get; set; }
         // todo: add relations with materials
+
+        public override string ToString()
+        {
+            return string.Format("A.: {0}; T.: {1}; P.:{2}",Article,Title,Price);
+        }
     }
 }

@@ -147,6 +147,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ToyFactory.Business\ToyFactory.Business.csproj">
+      <Project>{306A3D33-1A0D-41A2-A128-D8361A122BCA}</Project>
+      <Name>ToyFactory.Business</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ToyFactory.Dal\ToyFactory.Dal.csproj">
       <Project>{8ED3B48B-A99B-415D-9CFB-D5C234EE9E7A}</Project>
       <Name>ToyFactory.Dal</Name>
