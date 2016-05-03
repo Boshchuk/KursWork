@@ -18,14 +18,13 @@ namespace ToyFactory.Forms.Toys
 
         private void InitFakeToys()
         {
-
-
             listBox1.Items.Clear();
 
             listBox1.Items.Add("test");
 
             try
             {
+                // TODO: add common mechanism here 
                 var toys = _toysController.GetAllToys();
 
                 foreach (var toy in toys)
@@ -35,11 +34,8 @@ namespace ToyFactory.Forms.Toys
             }
             catch (CantConnectToDbException ex)
             {
-                MessageBox.Show(ex.Message);
-
+                throw new CantConnectToDbException(ex.Message);
             }
-            
-
         }
 
         public ToysListForm(ToyFactoryContext toyFactoryContext)
