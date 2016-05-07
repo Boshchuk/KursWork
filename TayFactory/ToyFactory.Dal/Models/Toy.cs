@@ -12,7 +12,6 @@ namespace ToyFactory.Dal.Models
 
         public string Title { get; set; }
 
-
         public decimal Price { get; set; }
 
         public virtual List<Material> UsedMaterials { get; set; }
