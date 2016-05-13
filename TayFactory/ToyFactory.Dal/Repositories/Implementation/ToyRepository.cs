@@ -1,6 +1,9 @@
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
+using ToyFactory.Business;
 using ToyFactory.Dal.Models;
 using ToyFactory.Dal.Repositories.Interfaces;
 
@@ -17,7 +20,15 @@ namespace ToyFactory.Dal.Repositories.Implementation
 
         public IEnumerable<Toy> GetAll()
         {
-            return _context.Toys.ToList();
+            try
+            {
+                return _context.Toys.ToList();
+            }
+            catch (SqlException exception)
+            {
+                throw new CantConnectToDbException("Can't connect to DB");
+            }
+            
         }
 
         public Toy GetById(int toyId)

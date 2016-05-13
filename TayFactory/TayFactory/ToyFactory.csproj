@@ -71,6 +71,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\SimpleLoadingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Common\SimpleLoadingForm.Designer.cs">
+      <DependentUpon>SimpleLoadingForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormMode.cs" />
     <Compile Include="Forms\Form1.cs">
       <SubType>Form</SubType>
@@ -90,6 +96,12 @@
     <Compile Include="Forms\Materials\MaterialsForm.Designer.cs">
       <DependentUpon>MaterialsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Toys\AddEditToyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Toys\AddEditToyForm.Designer.cs">
+      <DependentUpon>AddEditToyForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Toys\ToysListForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,6 +110,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Common\SimpleLoadingForm.resx">
+      <DependentUpon>SimpleLoadingForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -106,6 +121,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Materials\MaterialsForm.resx">
       <DependentUpon>MaterialsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Toys\AddEditToyForm.resx">
+      <DependentUpon>AddEditToyForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Toys\ToysListForm.resx">
       <DependentUpon>ToysListForm.cs</DependentUpon>
@@ -147,16 +165,16 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ToyFactory.Business\ToyFactory.Business.csproj">
+      <Project>{306A3D33-1A0D-41A2-A128-D8361A122BCA}</Project>
+      <Name>ToyFactory.Business</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ToyFactory.Dal\ToyFactory.Dal.csproj">
       <Project>{8ED3B48B-A99B-415D-9CFB-D5C234EE9E7A}</Project>
       <Name>ToyFactory.Dal</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="NewFolder1\" />
-    <Folder Include="NewFolder2\" />
-    <Folder Include="NewFolder3\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

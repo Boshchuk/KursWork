@@ -7,14 +7,43 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ToyFactory.Business;
+using ToyFactory.Dal;
 
 namespace ToyFactory.Forms.Toys
 {
     public partial class ToysListForm : Form
     {
-        public ToysListForm()
+        private ToysController _toysController;
+
+        private void InitFakeToys()
         {
+            listBox1.Items.Clear();
+
+            listBox1.Items.Add("test");
+
+            try
+            {
+                // TODO: add common mechanism here 
+                var toys = _toysController.GetAllToys();
+
+                foreach (var toy in toys)
+                {
+                    listBox1.Items.Add(toy);
+                }
+            }
+            catch (CantConnectToDbException ex)
+            {
+                throw new CantConnectToDbException(ex.Message);
+            }
+        }
+
+        public ToysListForm(ToyFactoryContext toyFactoryContext)
+        {
+            _toysController = new ToysController(toyFactoryContext);
             InitializeComponent();
+
+            InitFakeToys();
         }
     }
 }

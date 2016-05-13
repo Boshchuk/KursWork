@@ -35,6 +35,11 @@ namespace ToyFactory.Business
             _toyRepository = new ToyRepository(_context);
         }
 
+        public List<Toy> GetAllToys()
+        {
+            return _toyRepository.GetAll().ToList();
+        }
+
         public void InsertToy(Toy toy)
         {
             _toyRepository.Insert(toy);
@@ -45,6 +50,12 @@ namespace ToyFactory.Business
         {
             _toyRepository.Update(toy);
             _toyRepository.Save();  // TODO: check is this needed
+        }
+
+        public void DeleteToy(Toy toy)
+        {
+            _toyRepository.Delete(toy.ToyId);
+            _toyRepository.Save();
         }
 
     }
