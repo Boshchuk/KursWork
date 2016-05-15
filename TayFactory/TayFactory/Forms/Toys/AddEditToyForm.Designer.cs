@@ -30,15 +30,17 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtArticle = new System.Windows.Forms.TextBox();
+            this.txtTitle = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.listBox2 = new System.Windows.Forms.ListBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.listBoxUsed = new System.Windows.Forms.ListBox();
+            this.listBoxAvalible = new System.Windows.Forms.ListBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnRemove = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -60,55 +62,32 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Title";
             // 
-            // textBox1
+            // txtArticle
             // 
-            this.textBox1.Location = new System.Drawing.Point(148, 13);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(156, 20);
-            this.textBox1.TabIndex = 2;
+            this.txtArticle.Location = new System.Drawing.Point(148, 13);
+            this.txtArticle.Name = "txtArticle";
+            this.txtArticle.Size = new System.Drawing.Size(156, 20);
+            this.txtArticle.TabIndex = 2;
             // 
-            // textBox2
+            // txtTitle
             // 
-            this.textBox2.Location = new System.Drawing.Point(148, 54);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(156, 20);
-            this.textBox2.TabIndex = 3;
+            this.txtTitle.Location = new System.Drawing.Point(148, 54);
+            this.txtTitle.Name = "txtTitle";
+            this.txtTitle.Size = new System.Drawing.Size(156, 20);
+            this.txtTitle.TabIndex = 3;
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnRemove);
+            this.panel1.Controls.Add(this.btnAdd);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.listBox2);
-            this.panel1.Controls.Add(this.listBox1);
+            this.panel1.Controls.Add(this.listBoxUsed);
+            this.panel1.Controls.Add(this.listBoxAvalible);
             this.panel1.Location = new System.Drawing.Point(26, 93);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(718, 166);
             this.panel1.TabIndex = 4;
-            // 
-            // listBox2
-            // 
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.Location = new System.Drawing.Point(301, 45);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(120, 95);
-            this.listBox2.TabIndex = 1;
-            // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(18, 45);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(120, 95);
-            this.listBox1.TabIndex = 0;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(15, 15);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(89, 13);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Avalible Materials";
             // 
             // label4
             // 
@@ -119,6 +98,32 @@
             this.label4.TabIndex = 3;
             this.label4.Text = "Used Materials";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(15, 15);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(89, 13);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Avalible Materials";
+            // 
+            // listBoxUsed
+            // 
+            this.listBoxUsed.FormattingEnabled = true;
+            this.listBoxUsed.Location = new System.Drawing.Point(301, 45);
+            this.listBoxUsed.Name = "listBoxUsed";
+            this.listBoxUsed.Size = new System.Drawing.Size(120, 95);
+            this.listBoxUsed.TabIndex = 1;
+            // 
+            // listBoxAvalible
+            // 
+            this.listBoxAvalible.FormattingEnabled = true;
+            this.listBoxAvalible.Location = new System.Drawing.Point(18, 45);
+            this.listBoxAvalible.Name = "listBoxAvalible";
+            this.listBoxAvalible.Size = new System.Drawing.Size(120, 95);
+            this.listBoxAvalible.TabIndex = 0;
+            this.listBoxAvalible.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            // 
             // btnSave
             // 
             this.btnSave.Location = new System.Drawing.Point(566, 295);
@@ -127,6 +132,7 @@
             this.btnSave.TabIndex = 5;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnCancel
             // 
@@ -136,6 +142,27 @@
             this.btnCancel.TabIndex = 6;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Enabled = false;
+            this.btnAdd.Location = new System.Drawing.Point(181, 45);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnAdd.TabIndex = 4;
+            this.btnAdd.Text = "-->";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            // 
+            // btnRemove
+            // 
+            this.btnRemove.Enabled = false;
+            this.btnRemove.Location = new System.Drawing.Point(181, 110);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(75, 23);
+            this.btnRemove.TabIndex = 5;
+            this.btnRemove.Text = "<--";
+            this.btnRemove.UseVisualStyleBackColor = true;
             // 
             // AddEditToyForm
             // 
@@ -145,8 +172,8 @@
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtTitle);
+            this.Controls.Add(this.txtArticle);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "AddEditToyForm";
@@ -162,14 +189,16 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtArticle;
+        private System.Windows.Forms.TextBox txtTitle;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.ListBox listBox2;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox listBoxUsed;
+        private System.Windows.Forms.ListBox listBoxAvalible;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button btnRemove;
+        private System.Windows.Forms.Button btnAdd;
     }
 }

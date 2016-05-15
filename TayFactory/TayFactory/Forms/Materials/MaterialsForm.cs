@@ -131,15 +131,8 @@ namespace ToyFactory.Forms.Materials
         {
             this.Hide();
 
-            var tag = ((Button) sender).Tag;
+            var formMode = FormsHelper.GetFormMode(sender);
 
-            var formMode = FormMode.Add;
-
-            if (tag == "Edit")
-            {
-                formMode = FormMode.Edit;
-            }
-            
             var material = new Material();
 
             if (formMode == FormMode.Edit)

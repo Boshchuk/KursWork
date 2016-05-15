@@ -50,12 +50,10 @@ namespace ToyFactory.Forms.Materials
         // See article about how return result:
         // http://stackoverflow.com/questions/600107/c-how-do-you-send-ok-or-cancel-return-messages-of-dialogs-when-not-using-butto/600412
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnCancel_Click(object sender, EventArgs e)
         {
-
             this.DialogResult = DialogResult.Cancel;
             this.Close();
-            
         }
 
         private void button1_Click(object sender, EventArgs e)

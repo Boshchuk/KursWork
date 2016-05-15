@@ -40,8 +40,10 @@
             this.bttnAdd.Name = "bttnAdd";
             this.bttnAdd.Size = new System.Drawing.Size(90, 23);
             this.bttnAdd.TabIndex = 1;
+            this.bttnAdd.Tag = "Add";
             this.bttnAdd.Text = "Add";
             this.bttnAdd.UseVisualStyleBackColor = true;
+            this.bttnAdd.Click += new System.EventHandler(this.btnAddEdit_Click);
             // 
             // button2
             // 
@@ -49,8 +51,10 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(90, 23);
             this.button2.TabIndex = 1;
+            this.button2.Tag = "Edit";
             this.button2.Text = "Edit";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.btnAddEdit_Click);
             // 
             // button3
             // 

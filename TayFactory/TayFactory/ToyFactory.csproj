@@ -78,6 +78,7 @@
       <DependentUpon>SimpleLoadingForm.cs</DependentUpon>
     </Compile>
     <Compile Include="FormMode.cs" />
+    <Compile Include="FormsHelper.cs" />
     <Compile Include="Forms\Form1.cs">
       <SubType>Form</SubType>
     </Compile>

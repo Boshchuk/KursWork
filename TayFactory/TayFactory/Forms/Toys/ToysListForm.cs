@@ -9,11 +9,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ToyFactory.Business;
 using ToyFactory.Dal;
+using ToyFactory.Dal.Models;
 
 namespace ToyFactory.Forms.Toys
 {
     public partial class ToysListForm : Form
     {
+        private readonly ToyFactoryContext _toyFactoryContext;
         private ToysController _toysController;
 
         private void InitFakeToys()
@@ -40,10 +42,37 @@ namespace ToyFactory.Forms.Toys
 
         public ToysListForm(ToyFactoryContext toyFactoryContext)
         {
+            _toyFactoryContext = toyFactoryContext;
             _toysController = new ToysController(toyFactoryContext);
             InitializeComponent();
 
             InitFakeToys();
+        }
+
+        /// <summary>
+        /// Обрабатывает событие по нажатию на Add Edit кнопки
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnAddEdit_Click(object sender, EventArgs e)
+        {
+            // проверяя tag свойство кнопки опеределяем в каком режиме открыть кнопку
+
+            this.Hide();
+
+            var formMode = FormsHelper.GetFormMode(sender);
+
+            var toy = new Toy();
+
+            // TODO: change to use controller intead
+            var allMaterials = _toyFactoryContext.Materials.ToList();
+
+
+            var addEditToyFormModal = new AddEditToyForm(toy, formMode, allMaterials);
+
+            var result = addEditToyFormModal.ShowDialog();
+
+            this.Show();
         }
     }
 }
