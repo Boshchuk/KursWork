@@ -18,11 +18,9 @@ namespace ToyFactory.Forms.Toys
         private readonly ToyFactoryContext _toyFactoryContext;
         private ToysController _toysController;
 
-        private void InitFakeToys()
+        private void InitToys()
         {
             listBox1.Items.Clear();
-
-            listBox1.Items.Add("test");
 
             try
             {
@@ -46,7 +44,7 @@ namespace ToyFactory.Forms.Toys
             _toysController = new ToysController(toyFactoryContext);
             InitializeComponent();
 
-            InitFakeToys();
+            InitToys();
         }
 
         /// <summary>
@@ -71,6 +69,17 @@ namespace ToyFactory.Forms.Toys
             var addEditToyFormModal = new AddEditToyForm(toy, formMode, allMaterials);
 
             var result = addEditToyFormModal.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                if (formMode == FormMode.Add)
+                {
+                    _toysController.InsertToy(toy);
+                }
+
+                InitToys();
+            }
+
 
             this.Show();
         }
