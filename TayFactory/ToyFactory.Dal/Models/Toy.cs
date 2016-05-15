@@ -14,12 +14,22 @@ namespace ToyFactory.Dal.Models
 
         public decimal Price { get; set; }
 
-        public virtual List<Material> UsedMaterials { get; set; }
-        // todo: add relations with materials
+
+
+        public virtual ICollection<Material> UsedMaterials { get; set; }
+
+
+        public Toy()
+        {
+            this.UsedMaterials = new HashSet<Material>();
+        }
+
+
+
 
         public override string ToString()
         {
-            return string.Format("A.: {0}; T.: {1}; P.:{2}",Article,Title,Price);
+            return string.Format("A.: {0}; T.: {1}; P.:{2}", Article, Title, Price);
         }
     }
 }

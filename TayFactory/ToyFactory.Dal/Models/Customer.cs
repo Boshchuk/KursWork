@@ -1,7 +1,10 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace ToyFactory.Dal.Models
 {
     public class Customer
     {
+        [Key]
         public int CustomerId { get; set; }
 
         public int PasspartCode { get; set; }

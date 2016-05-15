@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace ToyFactory.Dal.Models
@@ -15,9 +16,15 @@ namespace ToyFactory.Dal.Models
         /// Название материала
         /// </summary>
         public string Title { get; set; }
+
         /// <summary>
-        /// 
+        /// Цена
         /// </summary>
         public decimal Price { get; set; }
+
+        /// <summary>
+        /// Список игрушек в которых этот материал используется.
+        /// </summary>
+        public virtual ICollection<Toy> Toys { get; set; }
     }
 }
