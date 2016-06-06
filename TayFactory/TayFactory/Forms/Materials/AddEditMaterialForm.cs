@@ -15,7 +15,7 @@ namespace ToyFactory.Forms.Materials
     public partial class AddEditMaterialForm : Form
     {
         private readonly Material _material;
-        const string AddBtnText = "Add";
+        const string AddBtnText = "Добавить";
         const string EditBtnText = "Edit";
 
         //public AddEditMaterialForm()
@@ -102,5 +102,10 @@ namespace ToyFactory.Forms.Materials
 
             return true;
         }
+
+        private void AddEditMaterialForm_Load(object sender, EventArgs e)
+        {
+
+        } 
     }
 }

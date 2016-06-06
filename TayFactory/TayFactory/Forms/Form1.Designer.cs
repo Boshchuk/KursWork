@@ -35,21 +35,23 @@
             // 
             // btnOpenMaterialsForm
             // 
-            this.btnOpenMaterialsForm.Location = new System.Drawing.Point(121, 12);
+            this.btnOpenMaterialsForm.Location = new System.Drawing.Point(161, 15);
+            this.btnOpenMaterialsForm.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnOpenMaterialsForm.Name = "btnOpenMaterialsForm";
-            this.btnOpenMaterialsForm.Size = new System.Drawing.Size(151, 23);
+            this.btnOpenMaterialsForm.Size = new System.Drawing.Size(201, 28);
             this.btnOpenMaterialsForm.TabIndex = 0;
-            this.btnOpenMaterialsForm.Text = "Display Materials";
+            this.btnOpenMaterialsForm.Text = "Показать материалы";
             this.btnOpenMaterialsForm.UseVisualStyleBackColor = true;
             this.btnOpenMaterialsForm.Click += new System.EventHandler(this.btnOpenMaterialsForm_Click);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(121, 51);
+            this.button1.Location = new System.Drawing.Point(161, 63);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(151, 23);
+            this.button1.Size = new System.Drawing.Size(201, 28);
             this.button1.TabIndex = 0;
-            this.button1.Text = "Toy Counstructor";
+            this.button1.Text = "Конструктор игрушек";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.startAsyncButton_Click);
             // 
@@ -61,11 +63,12 @@
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.ClientSize = new System.Drawing.Size(379, 321);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnOpenMaterialsForm);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
