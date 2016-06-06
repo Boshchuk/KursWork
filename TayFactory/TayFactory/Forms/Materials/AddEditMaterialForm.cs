@@ -27,6 +27,7 @@ namespace ToyFactory.Forms.Materials
         {
             InitializeComponent();
             _material = material;
+            
             switch (formMode)
             {
                 case FormMode.Add:
@@ -74,6 +75,8 @@ namespace ToyFactory.Forms.Materials
                 this.Close();
 
             }
+            else
+                MessageBox.Show("Error", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
             
             // add if valid and close
