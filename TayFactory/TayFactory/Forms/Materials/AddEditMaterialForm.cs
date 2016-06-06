@@ -75,8 +75,8 @@ namespace ToyFactory.Forms.Materials
                 this.Close();
 
             }
-            else
-                MessageBox.Show("Error", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //else
+            //    MessageBox.Show("Error", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
             
             // add if valid and close
@@ -87,23 +87,35 @@ namespace ToyFactory.Forms.Materials
 
         private bool IsValid()
         {
+            bool state = true;
+
             // todo: add more validation here with messages
             if (string.IsNullOrEmpty(txtCode.Text))
             {
-                return false;
+                errorProvider1.SetError(txtCode, "Код не должен быть пустым");
+                state = false;
             }
 
             if (string.IsNullOrEmpty(txtTitle.Text))
             {
-                return false;
+                state = false;
+            }
+
+           
+            decimal price = 0;
+            if (!decimal.TryParse(txtPrice.Text, out price))
+            {
+                errorProvider1.SetError(txtPrice, "Неправильный форматы цены");
+                state = false;
             }
 
             if (string.IsNullOrEmpty(txtPrice.Text))
             {
-                return false;
+                errorProvider1.SetError(txtPrice, "Цена не может быть пустым значением");
+                state = false;
             }
 
-            return true;
+            return state;
         }
 
         private void AddEditMaterialForm_Load(object sender, EventArgs e)
