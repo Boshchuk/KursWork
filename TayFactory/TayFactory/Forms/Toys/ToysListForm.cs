@@ -47,6 +47,33 @@ namespace ToyFactory.Forms.Toys
             InitToys();
         }
 
+        private Toy GetSelectedToy()
+        {
+            Toy toy;
+            var toys = _toysController.GetAllToys();
+            if (listBox1.SelectedItems.Count > 0)
+            {
+                var selected = listBox1.SelectedItems[0];
+
+                
+
+                if (selected != null)
+                {
+                    var index = listBox1.SelectedIndices[0];
+                    toy = toys.ToList()[index];
+                }
+                else
+                {
+                    toy = toys.FirstOrDefault();
+                }
+            }
+            else
+            {
+                toy = toys.FirstOrDefault();
+            }
+            return toy;
+        }
+
         /// <summary>
         /// Обрабатывает событие по нажатию на Add Edit кнопки
         /// </summary>
@@ -62,9 +89,17 @@ namespace ToyFactory.Forms.Toys
 
             var toy = new Toy();
 
+            if (formMode == FormMode.Edit)
+            {
+                toy = GetSelectedToy();
+            }
+
+
             // TODO: change to use controller intead
             var allMaterials = _toyFactoryContext.Materials.ToList();
 
+
+            
 
             var addEditToyFormModal = new AddEditToyForm(toy, formMode, allMaterials);
 

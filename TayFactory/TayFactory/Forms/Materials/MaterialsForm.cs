@@ -102,7 +102,7 @@ namespace ToyFactory.Forms.Materials
 
         private Material GetSelectedMaterial()
         {
-            var material = new Material();
+            Material material;
             var materials = materialRepository.GetMaterials();
             // init material as existed one
             if (dataGridView1.SelectedRows.Count > 0)
