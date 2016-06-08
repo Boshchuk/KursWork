@@ -98,6 +98,7 @@ namespace ToyFactory.Forms.Materials
 
             if (string.IsNullOrEmpty(txtTitle.Text))
             {
+                errorProvider1.SetError(txtTitle, "Название не должен быть пустым");
                 state = false;
             }
 
@@ -119,6 +120,11 @@ namespace ToyFactory.Forms.Materials
         }
 
         private void AddEditMaterialForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtTitle_TextChanged(object sender, EventArgs e)
         {
 
         } 
