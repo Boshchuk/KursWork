@@ -55,8 +55,6 @@ namespace ToyFactory.Forms.Toys
             {
                 var selected = listBox1.SelectedItems[0];
 
-                
-
                 if (selected != null)
                 {
                     var index = listBox1.SelectedIndices[0];
@@ -94,12 +92,8 @@ namespace ToyFactory.Forms.Toys
                 toy = GetSelectedToy();
             }
 
-
             // TODO: change to use controller intead
             var allMaterials = _toyFactoryContext.Materials.ToList();
-
-
-            
 
             var addEditToyFormModal = new AddEditToyForm(toy, formMode, allMaterials);
 
@@ -117,6 +111,18 @@ namespace ToyFactory.Forms.Toys
 
 
             this.Show();
+        }
+
+        private void btn_DeleteToy_Click(object sender, EventArgs e)
+        {
+            var toy = GetSelectedToy();
+
+            if (toy.ToyId != 0)
+            {
+                _toysController.DeleteToy(toy);
+                InitToys();
+            }
+            
         }
     }
 }

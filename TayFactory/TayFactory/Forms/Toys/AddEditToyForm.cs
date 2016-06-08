@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using ToyFactory.Dal.Models;
 
@@ -25,8 +20,6 @@ namespace ToyFactory.Forms.Toys
             _toy = toy;
             _avalibleMaterials = avalibleMaterials.ToList();
             InitializeComponent();
-
-
 
             switch (formMode)
             {
@@ -87,18 +80,13 @@ namespace ToyFactory.Forms.Toys
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            // TODO: add errors handling
-
             _toy.Article = txtArticle.Text;
             _toy.Title = txtTitle.Text;
-
-            // Save Materials
 
             if (_usedMaterials != null )
             {
                 _toy.UsedMaterials = _usedMaterials;
             }
-
 
             this.DialogResult = DialogResult.OK;
             this.Close();
