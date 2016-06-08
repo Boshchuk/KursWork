@@ -37,7 +37,7 @@ namespace ToyFactory.Forms.Toys
 
                         // инициализируем писок доступных материалов
 
-                        InitAvalibleMaterials(avalibleMaterials);
+                        InitAvalibleMaterials(_avalibleMaterials);
 
                         break;
                     }
@@ -46,12 +46,18 @@ namespace ToyFactory.Forms.Toys
                         // если захотеть менять тест кнопки сохранения - менять тут тоже
                         //button1.Text = EditBtnText;
 
+                        _avalibleMaterials = _avalibleMaterials.Except(toy.UsedMaterials).ToList();
+                        _usedMaterials = toy.UsedMaterials.ToList();
+
+
                         txtArticle.Text = toy.Article;
                         txtTitle.Text = toy.Title;
 
+                        InitAvalibleMaterials(_avalibleMaterials);
+                        InitUsedMaterial(toy.UsedMaterials);
                         // инициализируем писок доступных материалов и используемых материалов
 
-                        
+
                         break;
                     }
             }
@@ -60,6 +66,11 @@ namespace ToyFactory.Forms.Toys
         private void InitAvalibleMaterials(IEnumerable<Material> materials)
         {
             FormsHelper.InitMaterialsListBox(listBoxAvalible, materials);
+        }
+
+        private void InitUsedMaterial(IEnumerable<Material> materials)
+        {
+            FormsHelper.InitMaterialsListBox(listBoxUsed , materials);
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -83,7 +94,7 @@ namespace ToyFactory.Forms.Toys
 
             // Save Materials
 
-            if (_usedMaterials.Any())
+            if (_usedMaterials != null )
             {
                 _toy.UsedMaterials = _usedMaterials;
             }
