@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using ToyFactory.Business;
 using ToyFactory.Dal;
@@ -16,7 +10,7 @@ namespace ToyFactory.Forms.Toys
     public partial class ToysListForm : Form
     {
         private readonly ToyFactoryContext _toyFactoryContext;
-        private ToysController _toysController;
+        private readonly ToysController _toysController;
 
         private void InitToys()
         {

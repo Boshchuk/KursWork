@@ -4,7 +4,6 @@ using System.Windows.Forms;
 using ToyFactory.Business;
 using ToyFactory.Common;
 using ToyFactory.Dal;
-using ToyFactory.Dal.Models;
 using ToyFactory.Dal.Repositories.Implementation;
 using ToyFactory.Forms.Materials;
 using ToyFactory.Forms.Toys;
@@ -13,14 +12,20 @@ namespace ToyFactory.Forms
 {
     public partial class Form1 : Form
     {
-        private MaterialsForm materialsForm;
+        #region Forms
 
-        private ToysListForm toysListForm;
+        private MaterialsForm _materialsForm;
+
+        private ToysListForm _toysListForm;
+
+        private SimpleLoadingForm _loadForm;
+
+        #endregion
 
         private readonly ToyFactoryContext _context;
-        private MaterialRepository _materialRepository;
+        private readonly MaterialRepository _materialRepository;
 
-        private SimpleLoadingForm loadForm;
+        
 
         public Form1()
         {
@@ -30,26 +35,21 @@ namespace ToyFactory.Forms
 
             _materialRepository = new MaterialRepository(_context);
 
-           
+
             backgroundWorker1.WorkerReportsProgress = true;
-            // backgroundWorker1.WorkerSupportsCancellation = true;
+        
         }
 
         private void btnOpenMaterialsForm_Click(object sender, System.EventArgs e)
         {
-           OpenMaterialsForm();
+            OpenMaterialsForm();
         }
-
-        //private void ToyConstructor_CLick(object sender, System.EventArgs e)
-        //{
-        //    OpenToyConstructorForm();
-        //}
 
         private void OpenMaterialsForm()
         {
             this.Hide();
-            materialsForm = new MaterialsForm(_materialRepository);
-            materialsForm.ShowDialog();
+            _materialsForm = new MaterialsForm(_materialRepository);
+            _materialsForm.ShowDialog();
             this.Show();
         }
 
@@ -57,9 +57,9 @@ namespace ToyFactory.Forms
         {
             try
             {
-                toysListForm = new ToysListForm(_context);
+                _toysListForm = new ToysListForm(_context);
 
-                toysListForm.ShowDialog();
+                _toysListForm.ShowDialog();
             }
             catch (CantConnectToDbException ex)
             {
@@ -71,8 +71,8 @@ namespace ToyFactory.Forms
         {
             if (backgroundWorker1.IsBusy != true)
             {
-                loadForm = new SimpleLoadingForm();
-                loadForm.Show();
+                _loadForm = new SimpleLoadingForm();
+                _loadForm.Show();
                 this.Hide();
                 backgroundWorker1.RunWorkerAsync();
             }
@@ -91,46 +91,39 @@ namespace ToyFactory.Forms
         {
             BackgroundWorker worker = sender as BackgroundWorker;
 
-            //for (int i = 1; i <= 10; i++)
-            //{
-                if (worker.CancellationPending == true)
-                {
-                    e.Cancel = true;
-                    return;// break;
-                }
-                else
-                {
-                // OpenToyConstructorForm();
-                // Perform a time consuming operation and report progress.
-                //System.Threading.Thread.Sleep(500);
-
+            if (worker.CancellationPending == true)
+            {
+                e.Cancel = true;
+                return;
+            }
+            else
+            {
                 try
                 {
-                    toysListForm = new ToysListForm(_context);
+                    _toysListForm = new ToysListForm(_context);
                     worker.ReportProgress(100);
-                    toysListForm.ShowDialog();
+                    _toysListForm.ShowDialog();
                 }
                 catch (CantConnectToDbException ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
-               
-                }
-            //}
+
+            }
         }
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            loadForm.Close();
+            _loadForm.Close();
             this.Show();
         }
 
         private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            loadForm.Close();
+            _loadForm.Close();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void btnToyProduction_Click(object sender, EventArgs e)
         {
 
         }
