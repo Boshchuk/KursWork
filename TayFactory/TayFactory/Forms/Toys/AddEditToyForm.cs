@@ -87,6 +87,7 @@ namespace ToyFactory.Forms.Toys
             {
                 _toy.UsedMaterials = _usedMaterials;
             }
+            _toy.Price = CalculatePrice();
 
             this.DialogResult = DialogResult.OK;
             this.Close();
@@ -113,6 +114,7 @@ namespace ToyFactory.Forms.Toys
                          listBoxUsed,
                          _avalibleMaterials,
                          _usedMaterials);
+            DisplayPrice();
         }
 
         private void btnRemove_Click(object sender, EventArgs e)
@@ -122,12 +124,34 @@ namespace ToyFactory.Forms.Toys
                          _usedMaterials,
                          _avalibleMaterials
                          );
+            DisplayPrice();
         }
 
         private void listBoxUsed_SelectedIndexChanged(object sender, EventArgs e)
         {
             btnAdd.Enabled = false;
             btnRemove.Enabled = true;
+        }
+
+        public decimal CalculatePrice()
+        {
+            decimal price = 0;
+
+            foreach (var usedMaterial in _usedMaterials)
+            {
+                price += usedMaterial.Price;
+            }
+
+            
+            price = price + (price*35/100);
+
+            return price;
+        }
+
+        public void DisplayPrice()
+        {
+            var price = CalculatePrice();
+            txtPrice.Text = price.ToString();
         }
     }
 }

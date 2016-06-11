@@ -4,8 +4,10 @@ using System.Windows.Forms;
 using ToyFactory.Business;
 using ToyFactory.Common;
 using ToyFactory.Dal;
+using ToyFactory.Dal.Models;
 using ToyFactory.Dal.Repositories.Implementation;
 using ToyFactory.Forms.Materials;
+using ToyFactory.Forms.Production;
 using ToyFactory.Forms.Toys;
 
 namespace ToyFactory.Forms
@@ -24,8 +26,8 @@ namespace ToyFactory.Forms
 
         private readonly ToyFactoryContext _context;
         private readonly MaterialRepository _materialRepository;
+        private ToyProductionForm _toyProductionForm;
 
-        
 
         public Form1()
         {
@@ -125,7 +127,10 @@ namespace ToyFactory.Forms
 
         private void btnToyProduction_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            _toyProductionForm = new ToyProductionForm(_context);
+            _toyProductionForm.ShowDialog();
+            this.Show();
         }
     }
 }

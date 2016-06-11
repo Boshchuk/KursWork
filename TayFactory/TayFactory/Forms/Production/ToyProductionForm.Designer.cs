@@ -1,6 +1,6 @@
 ﻿namespace ToyFactory.Forms.Production
 {
-    partial class ToyProduction
+    partial class ToyProductionForm
     {
         /// <summary>
         /// Required designer variable.
@@ -51,7 +51,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(491, 13);
+            this.label2.Location = new System.Drawing.Point(13, 259);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(134, 13);
             this.label2.TabIndex = 1;
@@ -61,10 +61,10 @@
             // 
             this.dataGridViewProducedToys.AllowUserToAddRows = false;
             this.dataGridViewProducedToys.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewProducedToys.Location = new System.Drawing.Point(494, 40);
+            this.dataGridViewProducedToys.Location = new System.Drawing.Point(16, 302);
             this.dataGridViewProducedToys.Name = "dataGridViewProducedToys";
             this.dataGridViewProducedToys.ReadOnly = true;
-            this.dataGridViewProducedToys.Size = new System.Drawing.Size(233, 127);
+            this.dataGridViewProducedToys.Size = new System.Drawing.Size(792, 127);
             this.dataGridViewProducedToys.TabIndex = 2;
             // 
             // dataGridViewToysList
@@ -74,12 +74,12 @@
             this.dataGridViewToysList.Location = new System.Drawing.Point(12, 40);
             this.dataGridViewToysList.Name = "dataGridViewToysList";
             this.dataGridViewToysList.ReadOnly = true;
-            this.dataGridViewToysList.Size = new System.Drawing.Size(233, 127);
+            this.dataGridViewToysList.Size = new System.Drawing.Size(796, 127);
             this.dataGridViewToysList.TabIndex = 2;
             // 
             // btnProduce
             // 
-            this.btnProduce.Location = new System.Drawing.Point(266, 76);
+            this.btnProduce.Location = new System.Drawing.Point(256, 217);
             this.btnProduce.Name = "btnProduce";
             this.btnProduce.Size = new System.Drawing.Size(206, 55);
             this.btnProduce.TabIndex = 3;
@@ -88,25 +88,25 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(335, 50);
+            this.textBox1.Location = new System.Drawing.Point(338, 191);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(75, 20);
             this.textBox1.TabIndex = 4;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
-            // ToyProduction
+            // ToyProductionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(820, 202);
+            this.ClientSize = new System.Drawing.Size(820, 452);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.btnProduce);
             this.Controls.Add(this.dataGridViewToysList);
             this.Controls.Add(this.dataGridViewProducedToys);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "ToyProduction";
-            this.Text = "ToyProduction";
+            this.Name = "ToyProductionForm";
+            this.Text = "ToyProductionForm";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProducedToys)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewToysList)).EndInit();
             this.ResumeLayout(false);
