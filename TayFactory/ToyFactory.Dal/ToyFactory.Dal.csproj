@@ -54,6 +54,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Material.cs" />
+    <Compile Include="Models\StockItem.cs" />
     <Compile Include="Models\Toy.cs" />
     <Compile Include="Repositories\Interfaces\IMaterialRepository.cs" />
     <Compile Include="Repositories\Implementation\MaterialRepository.cs" />

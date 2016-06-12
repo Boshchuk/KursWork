@@ -79,12 +79,13 @@
             // 
             // btnProduce
             // 
-            this.btnProduce.Location = new System.Drawing.Point(256, 217);
+            this.btnProduce.Location = new System.Drawing.Point(232, 217);
             this.btnProduce.Name = "btnProduce";
-            this.btnProduce.Size = new System.Drawing.Size(206, 55);
+            this.btnProduce.Size = new System.Drawing.Size(305, 28);
             this.btnProduce.TabIndex = 3;
             this.btnProduce.Text = "Произвести указанное количиство игрушек";
             this.btnProduce.UseVisualStyleBackColor = true;
+            this.btnProduce.Click += new System.EventHandler(this.btnProduce_Click);
             // 
             // textBox1
             // 

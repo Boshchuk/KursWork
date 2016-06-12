@@ -2,6 +2,8 @@
 using System.Linq;
 using System.Windows.Forms;
 using ToyFactory.Business;
+using ToyFactory.Business.Controllers.Implimentations;
+using ToyFactory.Business.Controllers.Interfaces;
 using ToyFactory.Dal;
 using ToyFactory.Dal.Models;
 
@@ -10,7 +12,7 @@ namespace ToyFactory.Forms.Toys
     public partial class ToysListForm : Form
     {
         private readonly ToyFactoryContext _toyFactoryContext;
-        private readonly ToysController _toysController;
+        private readonly IToysController _toysController;
 
         private void InitToys()
         {

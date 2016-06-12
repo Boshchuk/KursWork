@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using ToyFactory.Business;
+using ToyFactory.Business.Controllers.Implimentations;
 using ToyFactory.Dal;
 
 namespace ToyFactory.Forms.Production
@@ -62,6 +56,11 @@ namespace ToyFactory.Forms.Production
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnProduce_Click(object sender, EventArgs e)
         {
 
         }

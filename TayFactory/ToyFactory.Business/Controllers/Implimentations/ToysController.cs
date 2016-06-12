@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using ToyFactory.Business.Controllers.Interfaces;
 using ToyFactory.Dal;
 using ToyFactory.Dal.Models;
 using ToyFactory.Dal.Repositories.Implementation;
 using ToyFactory.Dal.Repositories.Interfaces;
 
-namespace ToyFactory.Business
+namespace ToyFactory.Business.Controllers.Implimentations
 {
-    public class ToysController
+    public class ToysController : IToysController
     {
         private readonly ToyFactoryContext _context;
 
@@ -35,7 +33,7 @@ namespace ToyFactory.Business
             _toyRepository = new ToyRepository(_context);
         }
 
-        public List<Toy> GetAllToys()
+        public IEnumerable<Toy> GetAllToys()
         {
             return _toyRepository.GetAll().ToList();
         }
