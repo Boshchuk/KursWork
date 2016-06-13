@@ -1,11 +1,9 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Windows.Forms;
-using ToyFactory.Business;
+using ToyFactory.Business.Controllers.Implimentations;
 using ToyFactory.Common;
 using ToyFactory.Dal;
-using ToyFactory.Dal.Models;
-using ToyFactory.Dal.Repositories.Implementation;
 using ToyFactory.Forms.Materials;
 using ToyFactory.Forms.Production;
 using ToyFactory.Forms.Toys;
@@ -22,12 +20,18 @@ namespace ToyFactory.Forms
 
         private SimpleLoadingForm _loadForm;
 
-        #endregion
-
-        private readonly ToyFactoryContext _context;
-        private readonly MaterialRepository _materialRepository;
         private ToyProductionForm _toyProductionForm;
 
+        #endregion
+
+        #region For work with db
+
+        private readonly ToyFactoryContext _context;
+        //private readonly MaterialRepository _materialRepository;
+
+        private readonly MaterialsController _materialsController;
+
+        #endregion
 
         public Form1()
         {
@@ -35,8 +39,7 @@ namespace ToyFactory.Forms
 
             _context = new ToyFactoryContext();
 
-            _materialRepository = new MaterialRepository(_context);
-
+            _materialsController = new MaterialsController(_context);
 
             backgroundWorker1.WorkerReportsProgress = true;
         
@@ -50,7 +53,7 @@ namespace ToyFactory.Forms
         private void OpenMaterialsForm()
         {
             this.Hide();
-            _materialsForm = new MaterialsForm(_materialRepository);
+            _materialsForm = new MaterialsForm(_materialsController);
             _materialsForm.ShowDialog();
             this.Show();
         }

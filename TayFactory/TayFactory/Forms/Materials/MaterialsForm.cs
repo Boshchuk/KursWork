@@ -1,19 +1,21 @@
 ﻿using System;
 using System.Linq;
 using System.Windows.Forms;
-using ToyFactory.Dal;
+using ToyFactory.Business.Controllers.Implimentations;
 using ToyFactory.Dal.Models;
-using ToyFactory.Dal.Repositories.Implementation;
 
 namespace ToyFactory.Forms.Materials
 {
     public partial class MaterialsForm : Form
     {
-        private readonly MaterialRepository materialRepository;
+        //private readonly MaterialRepository materialRepository;
 
-        public MaterialsForm(MaterialRepository materialRepository)
+        private readonly MaterialsController _materialsController;
+
+        public MaterialsForm(MaterialsController materialsController)
         {
-            this.materialRepository = materialRepository;
+            _materialsController = materialsController;
+        
             InitializeComponent();
 
             InitHeaders();
@@ -34,7 +36,7 @@ namespace ToyFactory.Forms.Materials
         {
             this.dataGridView1.Rows.Clear();
 
-            var materials = materialRepository.GetMaterials();
+            var materials = _materialsController.GetMaterials();
 
             foreach (var material in materials)
             {
@@ -103,7 +105,7 @@ namespace ToyFactory.Forms.Materials
         private Material GetSelectedMaterial()
         {
             Material material;
-            var materials = materialRepository.GetMaterials();
+            var materials = _materialsController.GetMaterials();
             // init material as existed one
             if (dataGridView1.SelectedRows.Count > 0)
             {
@@ -148,14 +150,14 @@ namespace ToyFactory.Forms.Materials
             {
                 if (formMode == FormMode.Add)
                 {
-                    materialRepository.InsertMaterial(material);
+                    _materialsController.InsertMaterial(material);
                 }
                 else
                 {
-                    materialRepository.UpdateMaterial(material);
+                    _materialsController.UpdateMaterial(material);
                 }
                 
-                materialRepository.Save();
+                
                 InsertDataFromRepository();
             }
 
