@@ -81,9 +81,7 @@ namespace ToyFactory.Forms.Materials
                     var material = GetSelectedMaterial();
 
                     try {
-
-                        materialRepository.DeleteMaterial(material.MaterialId);
-                        materialRepository.Save();
+                        _materialsController.DeleteMaterial(material.MaterialId);
                     }
                     catch(Exception ex)
                     {

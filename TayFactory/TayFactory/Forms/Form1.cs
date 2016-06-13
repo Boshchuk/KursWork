@@ -27,7 +27,6 @@ namespace ToyFactory.Forms
         #region For work with db
 
         private readonly ToyFactoryContext _context;
-        //private readonly MaterialRepository _materialRepository;
 
         private readonly MaterialsController _materialsController;
 

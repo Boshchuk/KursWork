@@ -31,6 +31,7 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnShowAddNewMaterialForm = new System.Windows.Forms.Button();
             this.btnEditMaterial = new System.Windows.Forms.Button();
+            this.btn1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -38,20 +39,18 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(17, 16);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridView1.Location = new System.Drawing.Point(13, 13);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(613, 298);
+            this.dataGridView1.Size = new System.Drawing.Size(460, 242);
             this.dataGridView1.TabIndex = 0;
             // 
             // btnShowAddNewMaterialForm
             // 
-            this.btnShowAddNewMaterialForm.Location = new System.Drawing.Point(651, 31);
-            this.btnShowAddNewMaterialForm.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnShowAddNewMaterialForm.Location = new System.Drawing.Point(488, 25);
             this.btnShowAddNewMaterialForm.Name = "btnShowAddNewMaterialForm";
-            this.btnShowAddNewMaterialForm.Size = new System.Drawing.Size(223, 28);
+            this.btnShowAddNewMaterialForm.Size = new System.Drawing.Size(167, 23);
             this.btnShowAddNewMaterialForm.TabIndex = 1;
             this.btnShowAddNewMaterialForm.Tag = "Add";
             this.btnShowAddNewMaterialForm.Text = "Добавление материала";
@@ -61,25 +60,33 @@
             // btnEditMaterial
             // 
             this.btnEditMaterial.Enabled = false;
-            this.btnEditMaterial.Location = new System.Drawing.Point(651, 66);
-            this.btnEditMaterial.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnEditMaterial.Location = new System.Drawing.Point(488, 54);
             this.btnEditMaterial.Name = "btnEditMaterial";
-            this.btnEditMaterial.Size = new System.Drawing.Size(223, 28);
+            this.btnEditMaterial.Size = new System.Drawing.Size(167, 23);
             this.btnEditMaterial.TabIndex = 1;
             this.btnEditMaterial.Tag = "Edit";
-            this.btnEditMaterial.Text = "редактирование материала";
+            this.btnEditMaterial.Text = "Редактирование материала";
             this.btnEditMaterial.UseVisualStyleBackColor = true;
             this.btnEditMaterial.Click += new System.EventHandler(this.btnShowAddNewMaterialForm_Click);
             // 
+            // btn1
+            // 
+            this.btn1.Location = new System.Drawing.Point(488, 84);
+            this.btn1.Name = "btn1";
+            this.btn1.Size = new System.Drawing.Size(167, 23);
+            this.btn1.TabIndex = 2;
+            this.btn1.Text = "button1";
+            this.btn1.UseVisualStyleBackColor = true;
+            // 
             // MaterialsForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(887, 329);
+            this.ClientSize = new System.Drawing.Size(681, 267);
+            this.Controls.Add(this.btn1);
             this.Controls.Add(this.btnEditMaterial);
             this.Controls.Add(this.btnShowAddNewMaterialForm);
             this.Controls.Add(this.dataGridView1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "MaterialsForm";
             this.Text = "Материалы";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -92,5 +99,6 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btnShowAddNewMaterialForm;
         private System.Windows.Forms.Button btnEditMaterial;
+        private System.Windows.Forms.Button btn1;
     }
 }
