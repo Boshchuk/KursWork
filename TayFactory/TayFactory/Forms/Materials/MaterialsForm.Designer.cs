@@ -75,8 +75,9 @@
             this.btn1.Name = "btn1";
             this.btn1.Size = new System.Drawing.Size(167, 23);
             this.btn1.TabIndex = 2;
-            this.btn1.Text = "button1";
+            this.btn1.Text = "Удаление материала";
             this.btn1.UseVisualStyleBackColor = true;
+            this.btn1.Click += new System.EventHandler(this.btn1_Click);
             // 
             // MaterialsForm
             // 

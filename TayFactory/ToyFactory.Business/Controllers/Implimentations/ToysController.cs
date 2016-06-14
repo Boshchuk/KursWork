@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using ToyFactory.Business.Controllers.Interfaces;
 using ToyFactory.Dal;
@@ -56,5 +57,13 @@ namespace ToyFactory.Business.Controllers.Implimentations
             _toyRepository.Save();
         }
 
+    }
+
+    public class ObjectUsedException : Exception
+    {
+        public ObjectUsedException(string message) : base(message)
+        {
+
+        }
     }
 }

@@ -48,6 +48,7 @@ namespace ToyFactory.Business.Controllers.Implimentations
             if (toysThatUsing.Any())
             {
                 // hande cant delete
+                throw new ObjectUsedException("Материал где-то используется");
             }
             else
             {

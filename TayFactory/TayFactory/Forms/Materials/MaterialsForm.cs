@@ -47,9 +47,14 @@ namespace ToyFactory.Forms.Materials
         private void SettupEvents()
         {
             dataGridView1.UserDeletingRow += DataGridView1_UserDeletingRow;
-
+            dataGridView1.UserDeletedRow  += DataGridView1_Deleted;
             dataGridView1.SelectionChanged += DataGridView1_SelectionChanged;
             dataGridView1.RowLeave += DataGridView1_RowLeave;
+        }
+
+        private void DataGridView1_Deleted(object sender, DataGridViewRowEventArgs e)
+        {
+            InsertDataFromRepository();
         }
 
         private void DataGridView1_RowLeave(object sender, DataGridViewCellEventArgs e)
@@ -88,7 +93,7 @@ namespace ToyFactory.Forms.Materials
                         // TODO: add error handling
                         MessageBox.Show(ex.Message);
                     }
-
+                 
                 }
             }
         }
@@ -160,6 +165,40 @@ namespace ToyFactory.Forms.Materials
             }
 
             this.Show();
+        }
+
+        private void btn1_Click(object sender, EventArgs e)
+        {
+            // TODO: move to helper
+            var response = MessageBox.Show("Are you sure?", "Delete row?",
+                              MessageBoxButtons.YesNo,
+                              MessageBoxIcon.Question,
+                              MessageBoxDefaultButton.Button2);
+
+            if (response == DialogResult.No)
+            {
+               
+            }
+            else
+            {
+                var material = GetSelectedMaterial();
+                if (material !=null)
+                {
+                    try
+                    {
+                        _materialsController.DeleteMaterial(material.MaterialId);
+                    }
+                    catch (Exception ex)
+                    {
+                        // TODO: add error handling
+                        MessageBox.Show(ex.Message);
+                    }
+                    InsertDataFromRepository();
+                }
+                
+
+
+            }
         }
     }
 }
