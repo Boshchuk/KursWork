@@ -12,5 +12,7 @@ namespace ToyFactory.Dal
         public DbSet<Customer> Customers { get; set; }
 
         public DbSet<StockItem> StockItems { get; set; }
+
+        public DbSet<User> Users { get; set; }
     }
 }
