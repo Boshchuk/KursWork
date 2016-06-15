@@ -9,6 +9,8 @@ namespace ToyFactory.Business.Controllers.Interfaces
 
         IEnumerable<Toy> GetAllToys();
 
+        Toy GetById(int id);
+
         void DeleteToy(Toy toy);
     }
 }

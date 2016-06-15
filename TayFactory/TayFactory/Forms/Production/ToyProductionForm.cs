@@ -44,21 +44,16 @@ namespace ToyFactory.Forms.Production
         {
             dataGridViewToysList.Rows.Clear();
             var list = _toysController.GetAllToys();
-            foreach (var toy in list)
-            {
-                dataGridViewToysList.Rows.Add(toy.Article, toy.Title, toy.Price);
-            }
-        }
+            //foreach (var toy in list)
+            //{
+            //    dataGridViewToysList.Rows.Add(toy.Article, toy.Title, toy.Price);
+            //}
 
-        private void label1_Click(object sender, EventArgs e)
-        {
+            dataGridViewToysList.DataSource = list;
 
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+       
 
         private void btnProduce_Click(object sender, EventArgs e)
         {

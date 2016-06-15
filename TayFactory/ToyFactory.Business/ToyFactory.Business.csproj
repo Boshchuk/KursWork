@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\Implimentations\ObjectUsedException.cs" />
     <Compile Include="Controllers\Interfaces\IMaterialsController.cs" />
     <Compile Include="Controllers\Interfaces\IToysController.cs" />
     <Compile Include="Controllers\Implimentations\MaterialsController.cs" />

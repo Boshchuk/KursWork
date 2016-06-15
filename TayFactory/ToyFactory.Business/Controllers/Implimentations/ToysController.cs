@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using ToyFactory.Business.Controllers.Interfaces;
 using ToyFactory.Dal;
@@ -11,32 +10,24 @@ namespace ToyFactory.Business.Controllers.Implimentations
 {
     public class ToysController : IToysController
     {
-        private readonly ToyFactoryContext _context;
-
         private readonly IMaterialRepository _materialRepository;
 
         private readonly IToyRepository _toyRepository;
 
-        public ToysController()
-        {
-            _context = new ToyFactoryContext();
-
-            _materialRepository = new MaterialRepository(_context);
-            _toyRepository = new ToyRepository(_context);
-
-        }
-
         public ToysController(ToyFactoryContext context)
         {
-            _context = context;
-
-            _materialRepository = new MaterialRepository(_context);
-            _toyRepository = new ToyRepository(_context);
+            _materialRepository = new MaterialRepository(context);
+            _toyRepository = new ToyRepository(context);
         }
 
         public IEnumerable<Toy> GetAllToys()
         {
             return _toyRepository.GetAll().ToList();
+        }
+
+        public Toy GetById(int id)
+        {
+            return _toyRepository.GetById(id);
         }
 
         public void InsertToy(Toy toy)
@@ -57,13 +48,5 @@ namespace ToyFactory.Business.Controllers.Implimentations
             _toyRepository.Save();
         }
 
-    }
-
-    public class ObjectUsedException : Exception
-    {
-        public ObjectUsedException(string message) : base(message)
-        {
-
-        }
     }
 }

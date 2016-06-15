@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Windows.Forms;
-using ToyFactory.Business;
+
 using ToyFactory.Business.Controllers.Implimentations;
 using ToyFactory.Business.Controllers.Interfaces;
 using ToyFactory.Dal;
@@ -11,22 +11,24 @@ namespace ToyFactory.Forms.Toys
 {
     public partial class ToysListForm : Form
     {
-        private readonly ToyFactoryContext _toyFactoryContext;
         private readonly IToysController _toysController;
+        private MaterialsController _materialController;
+
+        public ToysListForm(ToyFactoryContext toyFactoryContext)
+        {
+            _toysController = new ToysController(toyFactoryContext);
+            _materialController = new MaterialsController(toyFactoryContext);
+            InitializeComponent();
+
+            InitToys();
+        }
 
         private void InitToys()
         {
-            listBox1.Items.Clear();
-
             try
             {
-                // TODO: add common mechanism here 
-                var toys = _toysController.GetAllToys();
-
-                foreach (var toy in toys)
-                {
-                    listBox1.Items.Add(toy);
-                }
+                dataGridView1.MultiSelect = false;
+                dataGridView1.DataSource = _toysController.GetAllToys();
             }
             catch (CantConnectToDbException ex)
             {
@@ -34,32 +36,17 @@ namespace ToyFactory.Forms.Toys
             }
         }
 
-        public ToysListForm(ToyFactoryContext toyFactoryContext)
-        {
-            _toyFactoryContext = toyFactoryContext;
-            _toysController = new ToysController(toyFactoryContext);
-            InitializeComponent();
-
-            InitToys();
-        }
+      
 
         private Toy GetSelectedToy()
         {
             Toy toy;
             var toys = _toysController.GetAllToys();
-            if (listBox1.SelectedItems.Count > 0)
+            if (dataGridView1.SelectedRows.Count > 0)
             {
-                var selected = listBox1.SelectedItems[0];
+                var selected = dataGridView1.SelectedRows[0].DataBoundItem as Toy;
 
-                if (selected != null)
-                {
-                    var index = listBox1.SelectedIndices[0];
-                    toy = toys.ToList()[index];
-                }
-                else
-                {
-                    toy = toys.FirstOrDefault();
-                }
+                toy = selected != null ? _toysController.GetById(selected.ToyId) : toys.FirstOrDefault();
             }
             else
             {
@@ -89,7 +76,7 @@ namespace ToyFactory.Forms.Toys
             }
 
             // TODO: change to use controller intead
-            var allMaterials = _toyFactoryContext.Materials.ToList();
+            var allMaterials =  _materialController.GetMaterials();
 
             var addEditToyFormModal = new AddEditToyForm(toy, formMode, allMaterials);
 
@@ -105,7 +92,6 @@ namespace ToyFactory.Forms.Toys
                 InitToys();
             }
 
-
             this.Show();
         }
 
@@ -118,7 +104,6 @@ namespace ToyFactory.Forms.Toys
                 _toysController.DeleteToy(toy);
                 InitToys();
             }
-            
         }
     }
 }
