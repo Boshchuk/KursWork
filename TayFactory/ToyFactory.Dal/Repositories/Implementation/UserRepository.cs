@@ -17,7 +17,6 @@ namespace ToyFactory.Dal.Repositories.Implementation
             _context = context;
         }
 
-
         public ICollection<User> GetUsers()
         {
             return _context.Users.ToArray();
@@ -46,7 +45,23 @@ namespace ToyFactory.Dal.Repositories.Implementation
             throw new System.NotImplementedException();
         }
 
-        public string CreateHash(string password)
+        public User CreateUser(string login, string password, string answer)
+        {
+            var hash = CreateHash(password);
+            var user = new User()
+            {
+                Login = login,
+                AnswerToSecretQuestion = answer,
+                PasswordHash = hash
+            };
+
+            _context.Users.Add(user);
+            _context.SaveChanges();
+
+            return GetUser(login, password);
+        }
+
+        private string CreateHash(string password)
         {
             using (MD5 md5Hash = MD5.Create())
             {

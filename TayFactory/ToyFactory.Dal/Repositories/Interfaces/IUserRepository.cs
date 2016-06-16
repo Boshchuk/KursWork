@@ -12,5 +12,7 @@ namespace ToyFactory.Dal.Repositories.Interfaces
         User GetUserForRecover(string login, string secretQuestionAnswer);
 
         User ResetPassword(User user, string newPassword);
+
+        User CreateUser(string login, string password, string answer);
     }
 }
