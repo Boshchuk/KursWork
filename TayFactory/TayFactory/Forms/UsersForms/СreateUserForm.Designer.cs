@@ -66,7 +66,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(42, 123);
+            this.label3.Location = new System.Drawing.Point(42, 126);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(121, 26);
             this.label3.TabIndex = 2;
@@ -94,6 +94,7 @@
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(179, 20);
             this.txtPassword.TabIndex = 5;
+            this.txtPassword.UseSystemPasswordChar = true;
             // 
             // txtAnswer
             // 
@@ -105,7 +106,7 @@
             // cmbQuestion
             // 
             this.cmbQuestion.FormattingEnabled = true;
-            this.cmbQuestion.Location = new System.Drawing.Point(169, 123);
+            this.cmbQuestion.Location = new System.Drawing.Point(169, 131);
             this.cmbQuestion.Name = "cmbQuestion";
             this.cmbQuestion.Size = new System.Drawing.Size(179, 21);
             this.cmbQuestion.TabIndex = 7;
@@ -132,18 +133,19 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(44, 92);
+            this.label5.Location = new System.Drawing.Point(44, 86);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(88, 13);
+            this.label5.Size = new System.Drawing.Size(91, 26);
             this.label5.TabIndex = 10;
-            this.label5.Text = "Введите пароль";
+            this.label5.Text = "Введите пароль \r\nеще раз";
             // 
             // txtPasswordRepeat
             // 
-            this.txtPasswordRepeat.Location = new System.Drawing.Point(169, 92);
+            this.txtPasswordRepeat.Location = new System.Drawing.Point(169, 86);
             this.txtPasswordRepeat.Name = "txtPasswordRepeat";
-            this.txtPasswordRepeat.Size = new System.Drawing.Size(100, 20);
+            this.txtPasswordRepeat.Size = new System.Drawing.Size(179, 20);
             this.txtPasswordRepeat.TabIndex = 6;
+            this.txtPasswordRepeat.UseSystemPasswordChar = true;
             // 
             // errorProvider1
             // 

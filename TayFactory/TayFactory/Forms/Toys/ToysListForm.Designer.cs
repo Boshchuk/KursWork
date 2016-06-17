@@ -73,17 +73,17 @@
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToOrderColumns = true;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(13, 100);
+            this.dataGridView1.Location = new System.Drawing.Point(13, 12);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(407, 137);
+            this.dataGridView1.Size = new System.Drawing.Size(406, 225);
             this.dataGridView1.TabIndex = 3;
             // 
             // ToysListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(568, 249);
+            this.ClientSize = new System.Drawing.Size(565, 254);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnDeleteToy);
             this.Controls.Add(this.button2);

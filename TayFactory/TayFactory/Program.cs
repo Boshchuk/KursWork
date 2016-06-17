@@ -16,6 +16,7 @@ namespace ToyFactory
         [STAThread]
         static void Main()
         {
+            var fastRun = true;
             var userrepository = new UserRepository(new ToyFactoryContext());
 
             var users = userrepository.GetUsers();
@@ -23,18 +24,24 @@ namespace ToyFactory
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            if (users.Count > 0) 
+            if (fastRun)
             {
-                // run login
-                Application.Run(new LoginForm());
+                Application.Run(new Form1());
             }
             else
             {
-                //run registration form
-                Application.Run(new СreateUserForm(userrepository));
+                if (users.Count > 0)
+                {
+                    // run login
+                    Application.Run(new LoginForm(userrepository));
+                }
+                else
+                {
+                    //run registration form
+                    Application.Run(new СreateUserForm(userrepository));
+                }
             }
-            
-           // Application.Run(new Form1());
+           
         }
     }
 }
