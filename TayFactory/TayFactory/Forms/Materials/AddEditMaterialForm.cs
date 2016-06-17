@@ -61,8 +61,6 @@ namespace ToyFactory.Forms.Materials
         {
             errorProvider1.Clear();
 
-            // todo validate
-
             var isValid = IsValid();
             // display error if not valid
             if (isValid)
@@ -75,14 +73,6 @@ namespace ToyFactory.Forms.Materials
                 this.Close();
 
             }
-            //else
-            //    MessageBox.Show("Error", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
-            
-            // add if valid and close
-
-
-
         }
 
         private bool IsValid()

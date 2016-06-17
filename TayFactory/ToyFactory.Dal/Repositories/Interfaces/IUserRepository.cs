@@ -14,5 +14,7 @@ namespace ToyFactory.Dal.Repositories.Interfaces
         User ResetPassword(User user, string newPassword);
 
         User CreateUser(string login, string password, string answer);
+
+        bool IsLoginFree(string login);
     }
 }

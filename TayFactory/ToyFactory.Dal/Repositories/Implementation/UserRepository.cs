@@ -61,6 +61,15 @@ namespace ToyFactory.Dal.Repositories.Implementation
             return GetUser(login, password);
         }
 
+        public bool IsLoginFree(string login)
+        {
+            var count = GetUsers().Count(u => u.Login == login);
+
+            return count == 0;
+        }
+
+        #region password Hashes
+
         private string CreateHash(string password)
         {
             using (MD5 md5Hash = MD5.Create())
@@ -111,5 +120,7 @@ namespace ToyFactory.Dal.Repositories.Implementation
                 return false;
             }
         }
+
+        #endregion
     }
 }

@@ -31,6 +31,7 @@ namespace ToyFactory
             else
             {
                 //run registration form
+                Application.Run(new СreateUserForm(userrepository));
             }
             
            // Application.Run(new Form1());
