@@ -23,6 +23,11 @@ namespace ToyFactory.Dal.Models
             UsedMaterial = usedMaterial;
             Quentity = count;
         }
-        
+
+        MaterialInToy()
+        {
+            UsedMaterial = null;
+            Quentity = 0;
+        }
     }
 }
