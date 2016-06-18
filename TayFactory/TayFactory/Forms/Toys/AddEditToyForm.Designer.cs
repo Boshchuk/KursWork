@@ -28,22 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtArticle = new System.Windows.Forms.TextBox();
             this.txtTitle = new System.Windows.Forms.TextBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.btnRemove = new System.Windows.Forms.Button();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.listBoxUsed = new System.Windows.Forms.ListBox();
-            this.listBoxAvalible = new System.Windows.Forms.ListBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.txtPrice = new System.Windows.Forms.TextBox();
-            this.panel1.SuspendLayout();
+            this.panelMaterials = new System.Windows.Forms.Panel();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -66,92 +63,30 @@
             // 
             // txtArticle
             // 
-            this.txtArticle.Location = new System.Drawing.Point(148, 13);
+            this.txtArticle.Location = new System.Drawing.Point(101, 10);
             this.txtArticle.Name = "txtArticle";
             this.txtArticle.Size = new System.Drawing.Size(156, 20);
             this.txtArticle.TabIndex = 2;
             // 
             // txtTitle
             // 
-            this.txtTitle.Location = new System.Drawing.Point(148, 54);
+            this.txtTitle.Location = new System.Drawing.Point(101, 59);
             this.txtTitle.Name = "txtTitle";
             this.txtTitle.Size = new System.Drawing.Size(156, 20);
             this.txtTitle.TabIndex = 3;
             // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.btnRemove);
-            this.panel1.Controls.Add(this.btnAdd);
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.listBoxUsed);
-            this.panel1.Controls.Add(this.listBoxAvalible);
-            this.panel1.Location = new System.Drawing.Point(26, 93);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(718, 166);
-            this.panel1.TabIndex = 4;
-            // 
-            // btnRemove
-            // 
-            this.btnRemove.Enabled = false;
-            this.btnRemove.Location = new System.Drawing.Point(181, 110);
-            this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Size = new System.Drawing.Size(75, 23);
-            this.btnRemove.TabIndex = 5;
-            this.btnRemove.Text = "<--";
-            this.btnRemove.UseVisualStyleBackColor = true;
-            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.Enabled = false;
-            this.btnAdd.Location = new System.Drawing.Point(181, 45);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(75, 23);
-            this.btnAdd.TabIndex = 4;
-            this.btnAdd.Text = "-->";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(298, 15);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(144, 13);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Используемые материалы";
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(15, 15);
+            this.label3.Location = new System.Drawing.Point(23, 100);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(130, 13);
+            this.label3.Size = new System.Drawing.Size(201, 13);
             this.label3.TabIndex = 2;
-            this.label3.Text = "Имеющиеся материалы";
-            // 
-            // listBoxUsed
-            // 
-            this.listBoxUsed.FormattingEnabled = true;
-            this.listBoxUsed.Location = new System.Drawing.Point(301, 45);
-            this.listBoxUsed.Name = "listBoxUsed";
-            this.listBoxUsed.Size = new System.Drawing.Size(120, 95);
-            this.listBoxUsed.TabIndex = 1;
-            this.listBoxUsed.SelectedIndexChanged += new System.EventHandler(this.listBoxUsed_SelectedIndexChanged);
-            // 
-            // listBoxAvalible
-            // 
-            this.listBoxAvalible.FormattingEnabled = true;
-            this.listBoxAvalible.Location = new System.Drawing.Point(18, 45);
-            this.listBoxAvalible.Name = "listBoxAvalible";
-            this.listBoxAvalible.Size = new System.Drawing.Size(120, 95);
-            this.listBoxAvalible.TabIndex = 0;
-            this.listBoxAvalible.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            this.label3.Text = "Выбирите мотериалы и их количество";
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(566, 295);
+            this.btnSave.Location = new System.Drawing.Point(274, 432);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 5;
@@ -161,7 +96,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(647, 295);
+            this.btnCancel.Location = new System.Drawing.Point(375, 432);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 6;
@@ -172,7 +107,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(337, 13);
+            this.label5.Location = new System.Drawing.Point(291, 15);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(36, 13);
             this.label5.TabIndex = 7;
@@ -181,29 +116,40 @@
             // txtPrice
             // 
             this.txtPrice.Enabled = false;
-            this.txtPrice.Location = new System.Drawing.Point(380, 12);
+            this.txtPrice.Location = new System.Drawing.Point(350, 10);
             this.txtPrice.Name = "txtPrice";
             this.txtPrice.Size = new System.Drawing.Size(100, 20);
             this.txtPrice.TabIndex = 8;
+            // 
+            // panelMaterials
+            // 
+            this.panelMaterials.Location = new System.Drawing.Point(26, 124);
+            this.panelMaterials.Name = "panelMaterials";
+            this.panelMaterials.Size = new System.Drawing.Size(424, 275);
+            this.panelMaterials.TabIndex = 9;
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
             // 
             // AddEditToyForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(755, 324);
+            this.ClientSize = new System.Drawing.Size(482, 467);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.panelMaterials);
             this.Controls.Add(this.txtPrice);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.txtTitle);
             this.Controls.Add(this.txtArticle);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "AddEditToyForm";
             this.Text = "AddEditToyForm";
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -215,16 +161,12 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtArticle;
         private System.Windows.Forms.TextBox txtTitle;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.ListBox listBoxUsed;
-        private System.Windows.Forms.ListBox listBoxAvalible;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Button btnRemove;
-        private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtPrice;
+        private System.Windows.Forms.Panel panelMaterials;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

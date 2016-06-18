@@ -27,5 +27,18 @@ namespace ToyFactory
                 listBox.Items.Add(material.Title);
             }
         }
+
+        public static bool IsFieldNotNullAndNotEmpty(TextBox element, ErrorProvider errorProvider)
+        {
+            var state = true;
+
+            if (string.IsNullOrEmpty(element.Text))
+            {
+                errorProvider.SetError(element, "Поле не может быть пустым");
+                state = false;
+            }
+
+            return state;
+        }
     }
 }

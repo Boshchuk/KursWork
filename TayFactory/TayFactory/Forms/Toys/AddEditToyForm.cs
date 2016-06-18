@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
 using ToyFactory.Dal.Models;
@@ -10,66 +12,106 @@ namespace ToyFactory.Forms.Toys
     {
         private readonly Toy _toy;
 
-
-        private readonly IList<Material> _avalibleMaterials;
-
-        private readonly IList<Material> _usedMaterials = new List<Material>();
-
         public AddEditToyForm(Toy toy, FormMode formMode, IEnumerable<Material> avalibleMaterials)
         {
             _toy = toy;
-            _avalibleMaterials = avalibleMaterials.ToList();
+            
             InitializeComponent();
-
+            InitMaterials(avalibleMaterials.ToList(), toy.MaterialInToy !=null ? toy.MaterialInToy.ToList(): null);
             switch (formMode)
             {
                 case FormMode.Add:
                     {
-                        // если захотеть менять тест кнопки сохранения - менять здесь
-                        //button1.Text = AddBtnText;
-
                         // инициализируем писок доступных материалов
-
-                        InitAvalibleMaterials(_avalibleMaterials);
-
                         break;
                     }
                 case FormMode.Edit:
                     {
-                        // если захотеть менять тест кнопки сохранения - менять тут тоже
-                        //button1.Text = EditBtnText;
-
-                        _avalibleMaterials = _avalibleMaterials.Except(toy.UsedMaterials).ToList();
-                        _usedMaterials = toy.UsedMaterials.ToList();
-
-
                         txtArticle.Text = toy.Article;
                         txtTitle.Text = toy.Title;
-
-                        InitAvalibleMaterials(_avalibleMaterials);
-                        InitUsedMaterial(toy.UsedMaterials);
-                        // инициализируем писок доступных материалов и используемых материалов
-
 
                         break;
                     }
             }
+            DisplayPrice();
         }
 
-        private void InitAvalibleMaterials(IEnumerable<Material> materials)
+        private void InitMaterials(List<Material> materials, List<MaterialInToy> used)
         {
-            FormsHelper.InitMaterialsListBox(listBoxAvalible, materials);
+
+            for (int index = 0; index < materials.Count(); index++)
+            {
+                var avalibleMaterial = materials[index];
+
+                MaterialInToy posibleUsed = null;
+                if (used != null)
+                {
+                    posibleUsed = used.FirstOrDefault(m => m.UsedMaterial.MaterialId == avalibleMaterial.MaterialId);
+                }
+
+
+                var checkState = false;
+                var count = 0;
+                if (posibleUsed != null)
+                {
+                    checkState = true;
+                    count = posibleUsed.Quentity;
+                }
+
+
+                var checkBox = new CheckBox
+                {
+                    Text = avalibleMaterial.Title,
+                    Location = new Point(0, index*30),
+                    Tag = avalibleMaterial,
+                    Name = string.Format("chk_{0}", avalibleMaterial.MaterialId),
+                    Checked = checkState
+                };
+
+                checkBox.CheckedChanged += MaterialCheckedToUse;
+
+                var numeric = new NumericUpDown
+                {
+                    Text = count.ToString(),
+                    Location = new Point(180, index*30),
+                    Width = 60
+                };
+                numeric.ValueChanged += Numeric_ValueChanged;
+                numeric.Tag = avalibleMaterial;
+                numeric.Name = string.Format("num_{0}", avalibleMaterial.MaterialId);
+
+                panelMaterials.Controls.Add(checkBox);
+                panelMaterials.Controls.Add(numeric);
+
+
+            }
         }
 
-        private void InitUsedMaterial(IEnumerable<Material> materials)
+        private void Numeric_ValueChanged(object sender, EventArgs e)
         {
-            FormsHelper.InitMaterialsListBox(listBoxUsed , materials);
+            var s = sender as NumericUpDown;
+            var id = (s.Tag as Material).MaterialId;
+
+            var checkBoxControl = panelMaterials.Controls.Find(string.Format("chk_{0}", id), true).FirstOrDefault() as CheckBox;
+
+            if (checkBoxControl != null)
+            {
+                checkBoxControl.Checked = s.Value > 0;
+            }
+            DisplayPrice();
         }
 
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void MaterialCheckedToUse(object sender, EventArgs e)
         {
-            btnAdd.Enabled = true;
-            btnRemove.Enabled = false;
+            var s = sender as CheckBox;
+            var id = (s.Tag as Material).MaterialId;
+            var numControl = panelMaterials.Controls.Find(string.Format("num_{0}", id),true).FirstOrDefault();
+
+            if (numControl != null)
+            {
+                numControl.Text = s.Checked ? 1.ToString() : 0.ToString();
+            }
+            DisplayPrice();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -80,78 +122,71 @@ namespace ToyFactory.Forms.Toys
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            _toy.Article = txtArticle.Text;
-            _toy.Title = txtTitle.Text;
-
-            if (_usedMaterials != null )
+            if (IsValid())
             {
-                _toy.UsedMaterials = _usedMaterials;
-            }
-            _toy.Price = CalculatePrice();
+                _toy.Article = txtArticle.Text;
+                _toy.Title = txtTitle.Text;
 
-            this.DialogResult = DialogResult.OK;
-            this.Close();
-        }
+                var elements =GetUsedMaterials();
 
-        private void MoveMaterial(ListBox source, ListBox target, IList<Material> s, IList<Material> t)
-        {
-            if (source.SelectedItem != null)
-            {
-                var index = source.SelectedIndex;
-                var selected = s[index];
 
-                target.Items.Add(selected.Title);
-                t.Add(selected);
+                _toy.MaterialInToy = elements;
+                _toy.Price = CalculatePrice();
 
-                s.RemoveAt(index);
-                source.Items.RemoveAt(index);
+                this.DialogResult = DialogResult.OK;
+                this.Close();
             }
         }
 
-        private void btnAdd_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Возвращает использованые материалы, собирая информацию из контроллов.
+        /// </summary>
+        /// <returns></returns>
+        private List<MaterialInToy> GetUsedMaterials()
         {
-            MoveMaterial(listBoxAvalible,
-                         listBoxUsed,
-                         _avalibleMaterials,
-                         _usedMaterials);
-            DisplayPrice();
-        }
-
-        private void btnRemove_Click(object sender, EventArgs e)
-        {
-            MoveMaterial(listBoxUsed,
-                         listBoxAvalible,
-                         _usedMaterials,
-                         _avalibleMaterials
-                         );
-            DisplayPrice();
-        }
-
-        private void listBoxUsed_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            btnAdd.Enabled = false;
-            btnRemove.Enabled = true;
-        }
-
-        public decimal CalculatePrice()
-        {
-            decimal price = 0;
-
-            foreach (var usedMaterial in _usedMaterials)
+            var result = new List<MaterialInToy>();
+            for (var index = 0; index < panelMaterials.Controls.Count; )
             {
-                price += usedMaterial.Price;
-            }
+                var checkBox = panelMaterials.Controls[index] as CheckBox;
+                var numericUpDown = panelMaterials.Controls[index+1] as NumericUpDown;
 
-            
+                if (checkBox != null && numericUpDown != null)
+                {
+                    if (checkBox.Checked)
+                    {
+                        result.Add(
+                        new MaterialInToy((int)numericUpDown.Value, checkBox.Tag as Material));
+                    }
+                    
+                }
+                index = index + 2;
+            }
+            return result;
+        }
+
+        private bool IsValid()
+        {
+            var state = true;
+
+            state = FormsHelper.IsFieldNotNullAndNotEmpty(txtArticle, errorProvider1);
+            state = FormsHelper.IsFieldNotNullAndNotEmpty(txtTitle, errorProvider1);
+
+            return state;
+        }
+
+        private decimal CalculatePrice()
+        {
+            var price = GetUsedMaterials().Sum(usedMaterial => usedMaterial.UsedMaterial.Price * usedMaterial.Quentity);
+
             price = price + (price*35/100);
 
             return price;
         }
 
-        public void DisplayPrice()
+        private void DisplayPrice()
         {
             var price = CalculatePrice();
-            txtPrice.Text = price.ToString();
+            txtPrice.Text = price.ToString(CultureInfo.InvariantCulture);
         }
     }
 }

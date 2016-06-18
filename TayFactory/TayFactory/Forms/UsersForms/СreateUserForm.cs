@@ -23,28 +23,17 @@ namespace ToyFactory.Forms.UsersForms
         {
             var state = true;
 
-            state = IsFieldNotNullAndNotEmpty(txtLogin);
-            state = IsFieldNotNullAndNotEmpty(txtPassword);
-            state = IsFieldNotNullAndNotEmpty(txtPasswordRepeat);
-            state = IsFieldNotNullAndNotEmpty(txtAnswer);
+            state = FormsHelper.IsFieldNotNullAndNotEmpty(txtLogin, errorProvider1);
+            state = FormsHelper.IsFieldNotNullAndNotEmpty(txtPassword, errorProvider1);
+            state = FormsHelper.IsFieldNotNullAndNotEmpty(txtPasswordRepeat, errorProvider1);
+            state = FormsHelper.IsFieldNotNullAndNotEmpty(txtAnswer, errorProvider1);
 
             state = IsPasswordsEqual(txtPassword, txtPasswordRepeat);
 
             return state;
         }
 
-        private bool IsFieldNotNullAndNotEmpty(TextBox element)
-        {
-            var state = true;
-
-            if (string.IsNullOrEmpty(element.Text))
-            {
-                errorProvider1.SetError(element, "Поле не может быть пустым");
-                state = false;
-            }
-
-            return state;
-        }
+      
 
         private bool IsPasswordsEqual(TextBox passTextBox, TextBox secondPassTextBox)
         {

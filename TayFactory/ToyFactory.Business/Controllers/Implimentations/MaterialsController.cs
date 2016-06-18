@@ -43,7 +43,7 @@ namespace ToyFactory.Business.Controllers.Implimentations
             //
             var allToys = _toyRepository.GetAll();
 
-            var toysThatUsing = allToys.Where(t => t.UsedMaterials.Select(m => m.MaterialId == materialId).Any());
+            var toysThatUsing = new List<Toy>();// allToys.Where(t => t.UsedMaterialsInToy.Select(m => m.MaterialId == materialId).Any());
 
             if (toysThatUsing.Any())
             {

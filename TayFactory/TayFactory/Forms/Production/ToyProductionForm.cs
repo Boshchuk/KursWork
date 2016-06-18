@@ -36,7 +36,7 @@ namespace ToyFactory.Forms.Production
         private void InitStockListHeaders()
         {
             dataGridViewProducedToys.Columns.Add("Title", "Title");
-            dataGridViewProducedToys.Columns.Add("Count", "Count");
+            dataGridViewProducedToys.Columns.Add("Quentity", "Quentity");
             dataGridViewProducedToys.Columns.Add("Total Price", "Total Price");
         }
 

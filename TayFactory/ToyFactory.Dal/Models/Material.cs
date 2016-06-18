@@ -25,6 +25,6 @@ namespace ToyFactory.Dal.Models
         /// <summary>
         /// Список игрушек в которых этот материал используется.
         /// </summary>
-        public virtual ICollection<Toy> Toys { get; set; }
+        public virtual ICollection<MaterialInToy> MaterialsInToy { get; set; }
     }
 }

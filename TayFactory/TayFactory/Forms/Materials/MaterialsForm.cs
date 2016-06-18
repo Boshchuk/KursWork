@@ -8,8 +8,6 @@ namespace ToyFactory.Forms.Materials
 {
     public partial class MaterialsForm : Form
     {
-        //private readonly MaterialRepository materialRepository;
-
         private readonly MaterialsController _materialsController;
 
         public MaterialsForm(MaterialsController materialsController)

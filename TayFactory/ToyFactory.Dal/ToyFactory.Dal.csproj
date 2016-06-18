@@ -54,6 +54,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Material.cs" />
+    <Compile Include="Models\MaterialInToy.cs" />
     <Compile Include="Models\StockItem.cs" />
     <Compile Include="Models\Toy.cs" />
     <Compile Include="Models\User.cs" />
@@ -70,6 +71,9 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="TextFile1.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

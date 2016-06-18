@@ -10,7 +10,7 @@ namespace ToyFactory.Dal.Models
         public Toy BaseToy { get; set; }
 
         /// <summary>
-        /// Count in group
+        /// Quentity in group
         /// </summary>
         public int Count { get; set; }
 
