@@ -11,8 +11,10 @@ namespace ToyFactory.Forms.Toys
 {
     public partial class ToysListForm : Form
     {
+        // TODO: fix editing first element if selected only cell somewhere
+
         private readonly IToysController _toysController;
-        private MaterialsController _materialController;
+        private readonly MaterialsController _materialController;
 
         public ToysListForm(ToyFactoryContext toyFactoryContext)
         {
@@ -29,14 +31,14 @@ namespace ToyFactory.Forms.Toys
             {
                 dataGridView1.MultiSelect = false;
                 dataGridView1.DataSource = _toysController.GetAllToys();
+                dataGridView1.Columns["ToyId"].Visible = false;
+                dataGridView1.Columns["MaterialInToy"].Visible = false;
             }
             catch (CantConnectToDbException ex)
             {
                 throw new CantConnectToDbException(ex.Message);
             }
         }
-
-      
 
         private Toy GetSelectedToy()
         {
