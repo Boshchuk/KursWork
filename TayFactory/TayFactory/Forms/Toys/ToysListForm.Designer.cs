@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.bttnAdd = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnEdit = new System.Windows.Forms.Button();
             this.btnDeleteToy = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
@@ -47,16 +47,16 @@
             this.bttnAdd.UseVisualStyleBackColor = true;
             this.bttnAdd.Click += new System.EventHandler(this.btnAddEdit_Click);
             // 
-            // button2
+            // btnEdit
             // 
-            this.button2.Location = new System.Drawing.Point(426, 41);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(124, 23);
-            this.button2.TabIndex = 1;
-            this.button2.Tag = "Edit";
-            this.button2.Text = "Редактирование";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.btnAddEdit_Click);
+            this.btnEdit.Location = new System.Drawing.Point(426, 41);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(124, 23);
+            this.btnEdit.TabIndex = 1;
+            this.btnEdit.Tag = "Edit";
+            this.btnEdit.Text = "Редактирование";
+            this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnAddEdit_Click);
             // 
             // btnDeleteToy
             // 
@@ -87,7 +87,7 @@
             this.ClientSize = new System.Drawing.Size(565, 254);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnDeleteToy);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.bttnAdd);
             this.Name = "ToysListForm";
             this.Text = "Список игрушек ";
@@ -98,7 +98,7 @@
 
         #endregion
         private System.Windows.Forms.Button bttnAdd;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnDeleteToy;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;

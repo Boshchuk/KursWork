@@ -16,30 +16,26 @@ namespace ToyFactory.Forms.Materials
         
             InitializeComponent();
 
-            InitHeaders();
+           // InitHeaders();
             SettupEvents();
 
-            SettupDataSource();
             InsertDataFromRepository();
-        }
-
-        private void SettupDataSource()
-        {
-            // dataGridView1.DataSource = new dataSou
-            //this.dataGridView1.Rows.Add("five", "six", "seven", "eight");
-            //this.dataGridView1.Rows.Insert(0, "one", "two", "three", "four");
         }
 
         private void InsertDataFromRepository()
         {
-            this.dataGridView1.Rows.Clear();
+            //this.dataGridView1.Rows.Clear();
 
             var materials = _materialsController.GetMaterials();
 
-            foreach (var material in materials)
-            {
-                this.dataGridView1.Rows.Add(material.Code, material.Title, material.Price);
-            }
+            this.dataGridView1.DataSource = materials;
+
+            dataGridView1.Columns["MaterialId"].Visible = false;
+            dataGridView1.Columns["MaterialsInToy"].Visible = false;
+
+            var any = materials.Any();
+            btnEditMaterial.Enabled = any;
+            btnDelete.Enabled = any;
         }
 
         private void SettupEvents()
@@ -57,12 +53,12 @@ namespace ToyFactory.Forms.Materials
 
         private void DataGridView1_RowLeave(object sender, DataGridViewCellEventArgs e)
         {
-            //btnEditMaterial.Enabled = false;
+          //  btnEditMaterial.Enabled = false;
         }
 
         private void DataGridView1_SelectionChanged(object sender, EventArgs e)
         {
-            btnEditMaterial.Enabled = true;
+          //  btnEditMaterial.Enabled = true;
         }
 
         private void DataGridView1_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
@@ -96,12 +92,12 @@ namespace ToyFactory.Forms.Materials
             }
         }
 
-        private void InitHeaders()
-        {
-            dataGridView1.Columns.Add("Code", "Code");
-            dataGridView1.Columns.Add("Title", "Title");
-            dataGridView1.Columns.Add("Price", "Price");
-        }
+        //private void InitHeaders()
+        //{
+        //    dataGridView1.Columns.Add("Code", "Code");
+        //    dataGridView1.Columns.Add("Title", "Title");
+        //    dataGridView1.Columns.Add("Price", "Price");
+        //}
 
         private Material GetSelectedMaterial()
         {
@@ -168,7 +164,7 @@ namespace ToyFactory.Forms.Materials
         private void btn1_Click(object sender, EventArgs e)
         {
             // TODO: move to helper
-            var response = MessageBox.Show("Are you sure?", "Delete row?",
+            var response = MessageBox.Show("Вы уверены?", "Удалить запись?",
                               MessageBoxButtons.YesNo,
                               MessageBoxIcon.Question,
                               MessageBoxDefaultButton.Button2);
@@ -190,11 +186,10 @@ namespace ToyFactory.Forms.Materials
                     {
                         // TODO: add error handling
                         MessageBox.Show(ex.Message);
+
                     }
                     InsertDataFromRepository();
                 }
-                
-
 
             }
         }

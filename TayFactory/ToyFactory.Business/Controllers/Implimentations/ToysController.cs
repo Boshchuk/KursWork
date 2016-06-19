@@ -39,7 +39,7 @@ namespace ToyFactory.Business.Controllers.Implimentations
         public void UpdateToy(Toy toy)
         {
             _toyRepository.Update(toy);
-            _toyRepository.Save();  // TODO: check is this needed
+            _toyRepository.Save();
         }
 
         public void DeleteToy(Toy toy)

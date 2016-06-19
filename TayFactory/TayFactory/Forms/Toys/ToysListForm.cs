@@ -29,10 +29,16 @@ namespace ToyFactory.Forms.Toys
         {
             try
             {
+                var allToys = _toysController.GetAllToys();
                 dataGridView1.MultiSelect = false;
-                dataGridView1.DataSource = _toysController.GetAllToys();
+                dataGridView1.DataSource = allToys;
+
                 dataGridView1.Columns["ToyId"].Visible = false;
                 dataGridView1.Columns["MaterialInToy"].Visible = false;
+
+                var any = allToys.Any();
+                btnDeleteToy.Enabled = any;
+                btnEdit.Enabled = any;
             }
             catch (CantConnectToDbException ex)
             {
@@ -75,6 +81,11 @@ namespace ToyFactory.Forms.Toys
             if (formMode == FormMode.Edit)
             {
                 toy = GetSelectedToy();
+            }
+
+            if (toy == null)
+            {
+                return;
             }
 
             // TODO: change to use controller intead

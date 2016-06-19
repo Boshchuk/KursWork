@@ -21,9 +21,9 @@ namespace ToyFactory.Dal.Repositories.Implementation
         {
             try
             {
-                return _context.Toys.ToList();
+                return _context.Toys.Include(t=>t.MaterialInToy.Select(m=>m.UsedMaterial)).ToList();
             }
-            catch (SqlException exception)
+            catch (SqlException sqlException)
             {
                 throw new CantConnectToDbException("Can't connect to DB");
             }

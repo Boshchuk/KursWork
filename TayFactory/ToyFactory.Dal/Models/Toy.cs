@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ToyFactory.Dal.Models
 {
@@ -25,6 +26,24 @@ namespace ToyFactory.Dal.Models
         public override string ToString()
         {
             return string.Format("A.: {0}; T.: {1}; P.:{2}", Article, Title, Price);
+        }
+
+        [NotMapped]
+        public string UsedMaterials
+        {
+            get
+            {
+                var res = string.Empty;
+
+                foreach (var materialInToy in MaterialInToy)
+                {
+                    res += string.Format("{0} - в количестве: {1}; ", materialInToy.UsedMaterial.Title,
+                        materialInToy.Quentity);
+                }
+
+                return res;
+            }
+
         }
     }
 }

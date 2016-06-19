@@ -1,6 +1,5 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Dynamic;
 
 namespace ToyFactory.Dal.Models
 {
@@ -8,8 +7,6 @@ namespace ToyFactory.Dal.Models
     {
         [Key]
         public int MaterialInToyId { get; set; }
-
-      
         
         /// <summary>
         ///  оличество опеределенного материала в игрушке
@@ -29,5 +26,7 @@ namespace ToyFactory.Dal.Models
             UsedMaterial = null;
             Quentity = 0;
         }
+
+      
     }
 }

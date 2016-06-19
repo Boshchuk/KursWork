@@ -16,7 +16,7 @@ namespace ToyFactory
         [STAThread]
         static void Main()
         {
-            var fastRun = false;
+            var fastRun = true;
             var userrepository = new UserRepository(new ToyFactoryContext());
 
             var users = userrepository.GetUsers();
