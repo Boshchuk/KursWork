@@ -63,6 +63,7 @@
             this.dataGridViewProducedToys.Location = new System.Drawing.Point(16, 302);
             this.dataGridViewProducedToys.Name = "dataGridViewProducedToys";
             this.dataGridViewProducedToys.ReadOnly = true;
+            this.dataGridViewProducedToys.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewProducedToys.Size = new System.Drawing.Size(792, 127);
             this.dataGridViewProducedToys.TabIndex = 2;
             // 
@@ -73,6 +74,7 @@
             this.dataGridViewToysList.Location = new System.Drawing.Point(12, 40);
             this.dataGridViewToysList.Name = "dataGridViewToysList";
             this.dataGridViewToysList.ReadOnly = true;
+            this.dataGridViewToysList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewToysList.Size = new System.Drawing.Size(796, 127);
             this.dataGridViewToysList.TabIndex = 2;
             // 

@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using ToyFactory.Dal.Repositories.Implementation;
 
@@ -32,13 +25,22 @@ namespace ToyFactory.Forms.UsersForms
 
             if (user.UserId != 0)
             {
-                ShowDialog(new Form1());
+                this. Hide();
+                
+                var form1 = new Form1();
+                form1.ShowDialog();
+                this.Dispose();
             }
             else
             {
                 MessageBox.Show("Введенные логи и пароль не совпадают с данными в системе, попробуйте еще раз.");
             }
 
+        }
+
+        private void btnCanclel_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
         }
     }
 }

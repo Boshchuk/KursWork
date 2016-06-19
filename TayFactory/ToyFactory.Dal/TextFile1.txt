@@ -12,3 +12,6 @@
 
     Add-Migration Initial
 
+
+
+	How do I select a complete dataGridView Row when the user clicks a cell of that row? - http://stackoverflow.com/questions/13672693/how-do-i-select-a-complete-datagridview-row-when-the-user-clicks-a-cell-of-that

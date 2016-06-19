@@ -58,9 +58,10 @@ namespace ToyFactory.Forms.UsersForms
 
                     this.Hide();
 
-                    ShowDialog(new Form1());
+                    var f = new Form1();
+                    f.ShowDialog();
 
-                    this.Close();
+                    this.Dispose();
                 }
                 else
                 {
