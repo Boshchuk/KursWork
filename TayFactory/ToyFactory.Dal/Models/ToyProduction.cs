@@ -10,6 +10,6 @@ namespace ToyFactory.Dal.Models
 
         public Toy ConstructedToy { get; set; }
 
-        public virtual List<Material> UsedMaterials { get; set; }
+        public int Count { get; set; }
     }
 }

@@ -64,10 +64,12 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="Repositories\Interfaces\IMaterialRepository.cs" />
     <Compile Include="Repositories\Implementation\MaterialRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IStockItemsRepository.cs" />
     <Compile Include="Repositories\Interfaces\IToyRepository.cs" />
     <Compile Include="Repositories\Implementation\ToyRepository.cs" />
     <Compile Include="Repositories\Interfaces\IUserRepository.cs" />
     <Compile Include="Repositories\Implementation\UserRepository.cs" />
+    <Compile Include="Repositories\Implementation\StockItemsRepository.cs" />
     <Compile Include="ToyFactoryContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\ToyProduction.cs" />
