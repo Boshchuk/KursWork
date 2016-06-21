@@ -1,12 +1,16 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using ToyFactory.Business.Controllers.Implimentations;
 using ToyFactory.Common;
 using ToyFactory.Dal;
+using ToyFactory.Dal.Models;
+using ToyFactory.Dal.Repositories.Implementation;
 using ToyFactory.Forms.Materials;
 using ToyFactory.Forms.Production;
 using ToyFactory.Forms.Toys;
+using ToyFactory.Forms.UsersForms;
 
 namespace ToyFactory.Forms
 {
@@ -73,13 +77,22 @@ namespace ToyFactory.Forms
 
         private void startAsyncButton_Click(object sender, EventArgs e)
         {
-            if (backgroundWorker1.IsBusy != true)
-            {
-                _loadForm = new SimpleLoadingForm();
-                _loadForm.Show();
-                this.Hide();
-                backgroundWorker1.RunWorkerAsync();
-            }
+            ToyConstructorStart();
+        }
+
+        private void ToyConstructorStart()
+        {
+            //if (backgroundWorker1.IsBusy != true)
+            //{
+            //    _loadForm = new SimpleLoadingForm();
+            //    _loadForm.Show();
+            //    this.Hide();
+            //    backgroundWorker1.RunWorkerAsync();
+            //}
+            Hide();
+            _toysListForm = new ToysListForm(_context);
+            _toysListForm.ShowDialog();
+            Show();
         }
 
         private void cancelAsyncButton_Click(object sender, EventArgs e)
@@ -128,6 +141,77 @@ namespace ToyFactory.Forms
         }
 
         private void btnToyProduction_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            _toyProductionForm = new ToyProductionForm(_context);
+            _toyProductionForm.ShowDialog();
+            this.Show();
+        }
+
+        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void работаСМатериаламиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MaterialsListToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenMaterialsForm();
+        }
+
+        private void AddNewMaterialToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+
+
+            var material = new Material();
+            var addEditModal = new AddEditMaterialForm(material, FormMode.Edit);
+
+            var result = addEditModal.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+              _materialsController.InsertMaterial(material);
+            }
+
+            this.Show();
+        }
+
+        private void UsersList_Click(object sender, EventArgs e)
+        {
+            Hide();
+            ShowUserListDialog();
+            Show();
+        }
+
+        private void AddNewUserToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Hide();
+            var createUserForm = new СreateUserForm(new UserRepository(_context));
+            createUserForm.ShowDialog();
+
+            ShowUserListDialog();
+
+            Show();
+        }
+
+        private DialogResult ShowUserListDialog()
+        {
+            var form = new UsersList(_context);
+            var result = form.ShowDialog();
+            return result;
+        }
+
+        private void OpenToyConstructorИгрушекToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ToyConstructorStart();
+        }
+
+        private void ToyConstructionToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Hide();
             _toyProductionForm = new ToyProductionForm(_context);

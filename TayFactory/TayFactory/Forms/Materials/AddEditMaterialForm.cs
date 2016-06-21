@@ -1,12 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using ToyFactory.Dal.Models;
 
@@ -17,11 +10,6 @@ namespace ToyFactory.Forms.Materials
         private readonly Material _material;
         const string AddBtnText = "Добавить";
         const string EditBtnText = "Edit";
-
-        //public AddEditMaterialForm()
-        //{
-        //    InitializeComponent();
-        //}
 
         public AddEditMaterialForm(Material material, FormMode formMode)
         {
@@ -114,9 +102,6 @@ namespace ToyFactory.Forms.Materials
 
         }
 
-        private void txtTitle_TextChanged(object sender, EventArgs e)
-        {
-
-        } 
+     
     }
 }

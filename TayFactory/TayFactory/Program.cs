@@ -38,7 +38,14 @@ namespace ToyFactory
                 else
                 {
                     //run registration form
-                    Application.Run(new СreateUserForm(userrepository));
+                   // Application.Run(new СreateUserForm(userrepository));
+                    var form = new СreateUserForm(userrepository);
+                    form.ShowDialog();
+                    users = userrepository.GetUsers();
+                    if (users.Count > 0)
+                    {
+                        Application.Run(new LoginForm(userrepository));
+                    }
                 }
             }
            

@@ -56,11 +56,6 @@ namespace ToyFactory.Forms.UsersForms
                     _userRepository.CreateUser(txtLogin.Text, txtPassword.Text, txtAnswer.Text);
                     MessageBox.Show("Пользователь создан. Переход к приложению.");
 
-                    this.Hide();
-
-                    var f = new Form1();
-                    f.ShowDialog();
-
                     this.Dispose();
                 }
                 else
