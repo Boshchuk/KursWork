@@ -51,11 +51,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CantConnectToDbException.cs" />
-    <Compile Include="Migrations\201606191904543_laser.cs" />
-    <Compile Include="Migrations\201606191904543_laser.Designer.cs">
-      <DependentUpon>201606191904543_laser.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Material.cs" />
     <Compile Include="Models\MaterialInToy.cs" />
@@ -78,11 +73,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="TextFile1.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201606191904543_laser.resx">
-      <DependentUpon>201606191904543_laser.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

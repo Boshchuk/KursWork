@@ -73,13 +73,18 @@ namespace ToyFactory.Forms
 
         private void startAsyncButton_Click(object sender, EventArgs e)
         {
-            if (backgroundWorker1.IsBusy != true)
-            {
-                _loadForm = new SimpleLoadingForm();
-                _loadForm.Show();
-                this.Hide();
-                backgroundWorker1.RunWorkerAsync();
-            }
+            //if (backgroundWorker1.IsBusy != true)
+            //{
+            //    _loadForm = new SimpleLoadingForm();
+            //    _loadForm.ShowDialog();
+            //    this.Hide();
+            //    backgroundWorker1.RunWorkerAsync();
+            //}
+
+            this.Hide();
+            var toysForm = new ToysListForm(_context);
+            toysForm.ShowDialog();
+            this.Show();
         }
 
         private void cancelAsyncButton_Click(object sender, EventArgs e)
