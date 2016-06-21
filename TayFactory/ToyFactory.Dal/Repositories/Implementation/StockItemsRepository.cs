@@ -18,5 +18,16 @@ namespace ToyFactory.Dal.Repositories.Implementation
         {
             return _context.StockItems.ToList();
         }
+
+        public void Insert(Toy toy, int count)
+        {
+            var stockItem = new StockItem()
+            {
+                Count = count, Price = toy.Price*count, BaseToy = toy
+            };
+
+            _context.StockItems.Add(stockItem);
+            _context.SaveChanges();
+        }
     }
 }

@@ -7,5 +7,6 @@ namespace ToyFactory.Dal.Repositories.Interfaces
     {
         IList<StockItem> GetAllItems();
 
+        void Insert(Toy toy, int count);
     }
 }

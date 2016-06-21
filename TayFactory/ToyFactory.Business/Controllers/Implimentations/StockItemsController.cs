@@ -20,5 +20,10 @@ namespace ToyFactory.Business.Controllers.Implimentations
         {
             return _itemsRepository.GetAllItems();
         }
+
+        public void SimpleInsertInStock(Toy toy, int count)
+        {
+            _itemsRepository.Insert(toy, count);
+        }
     }
 }
